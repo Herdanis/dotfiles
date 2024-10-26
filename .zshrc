@@ -14,6 +14,13 @@ export TERM=xterm-256color
 export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# Set the default find command for fzf
+export FZF_DEFAULT_COMMAND="find . -maxdepth 3"
+
+# For Ctrl-T, show tree view of selected items
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'tree -C {} | head -200'"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -139,7 +146,9 @@ alias g="gcloud"
 alias gs="gsutil"
 alias lg="lazygit"
 alias ld="lazydocker"
-alias mux=tmuxinator
+alias mux="tmuxinator"
+alias cat="bat"
+alias fcat="fzf --preview -m 'bat --color=always {}'"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -203,3 +212,5 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Created by `pipx` on 2024-05-25 13:52:08
 export PATH="$PATH:/Users/herdanis/.local/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
