@@ -150,7 +150,7 @@ alias ld="lazydocker"
 alias mux="tmuxinator"
 alias cat="bat"
 alias fcat="fzf --preview -m 'bat --color=always {}'"
-alias dotfile="nvim ~/.dotfiles/"
+alias dotfile="cd ~/.dotfiles && nvim "
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
