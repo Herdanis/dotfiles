@@ -13,6 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export TERM=xterm-256color
 export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Set the default find command for fzf
 export FZF_DEFAULT_COMMAND="find . -maxdepth 3"
@@ -149,6 +150,7 @@ alias ld="lazydocker"
 alias mux="tmuxinator"
 alias cat="bat"
 alias fcat="fzf --preview -m 'bat --color=always {}'"
+alias dotfile="nvim ~/.dotfiles/"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -214,3 +216,10 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$PATH:/Users/herdanis/.local/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bun completions
+[ -s "/Users/herdanis/.bun/_bun" ] && source "/Users/herdanis/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
