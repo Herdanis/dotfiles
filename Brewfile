@@ -2,18 +2,23 @@ tap "derailed/popeye"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "pulumi/tap"
 tap "teamookla/speedtest"
 tap "tnk-studio/tools"
 # Simple, modern, secure file encryption
 brew "age"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Core application library for C
+brew "glib"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Perl lib for reading and writing EXIF metadata
@@ -28,8 +33,6 @@ brew "geckodriver"
 brew "git"
 # Audit git repos for secrets
 brew "gitleaks"
-# Core application library for C
-brew "glib"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Kubernetes package manager
@@ -62,8 +65,8 @@ brew "neovim"
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
-# Realtime distributed messaging platform
-brew "nsq"
+# Generate clients, server & docs from an OpenAPI spec (v2, v3)
+brew "openapi-generator"
 # Information gathering framework for phone numbers
 brew "phoneinfoga"
 # Execute binaries from Python packages in isolated environments
@@ -76,6 +79,8 @@ brew "pyenv"
 brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # User interface to the TELNET protocol
@@ -106,6 +111,8 @@ brew "zsh-syntax-highlighting"
 brew "derailed/popeye/popeye"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Pulumi - Modern Infrastructure as Code. Any cloud, any language 
+brew "pulumi/tap/pulumi"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 brew "tnk-studio/tools/lazykube"
@@ -119,8 +126,6 @@ cask "font-3270-nerd-font"
 cask "font-symbols-only-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
-# GPU-based terminal emulator
-cask "kitty"
 # Project management software
 cask "lark"
 # Interactive tool for analyzing MongoDB data
@@ -131,8 +136,6 @@ cask "neovide"
 cask "opera"
 # Collaboration platform for API development
 cask "postman"
-# Keyboard-driven, vim-like browser based on PyQt5
-cask "qutebrowser"
 # Music streaming service
 cask "spotify"
 # Native desktop client for WhatsApp
@@ -156,15 +159,12 @@ vscode "genieai.chatgpt-vscode"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "github.github-vscode-theme"
-vscode "github.vscode-github-actions"
 vscode "golang.go"
 vscode "hashicorp.terraform"
 vscode "hediet.vscode-drawio"
 vscode "hookyqr.beautify"
 vscode "humao.rest-client"
-vscode "icrawl.discord-vscode"
 vscode "janjoerke.jenkins-pipeline-linter-connector"
-vscode "jebbs.plantuml"
 vscode "juanblanco.solidity"
 vscode "kamikillerto.vscode-colorize"
 vscode "kevinrose.vsc-python-indent"
@@ -190,23 +190,15 @@ vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.azure-account"
 vscode "ms-vscode.azurecli"
 vscode "ms-vscode.makefile-tools"
-vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.vscode-typescript-next"
 vscode "ms-vsliveshare.vsliveshare"
-vscode "mtxr.sqltools"
-vscode "mtxr.sqltools-driver-mysql"
-vscode "mtxr.sqltools-driver-pg"
-vscode "mtxr.sqltools-driver-sqlite"
 vscode "njpwerner.autodocstring"
 vscode "nomicfoundation.hardhat-solidity"
 vscode "oderwat.indent-rainbow"
 vscode "patbenatar.advanced-new-file"
-vscode "phind.phind"
 vscode "pkief.material-icon-theme"
 vscode "pranaygp.vscode-css-peek"
 vscode "redhat.vscode-yaml"
@@ -217,7 +209,6 @@ vscode "shd101wyy.markdown-preview-enhanced"
 vscode "sleistner.vscode-fileutils"
 vscode "sumneko.lua"
 vscode "svelte.svelte-vscode"
-vscode "tabeyti.jenkins-jack"
 vscode "thomascsd.vscode-readme-pattern"
 vscode "tim-koehler.helm-intellisense"
 vscode "tobermory.es6-string-html"
