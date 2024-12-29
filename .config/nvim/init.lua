@@ -3,9 +3,12 @@ require("config.lazy")
 
 -- NOTE: THEMES
 
+-- ENABLE DRACULA THEME --
+-- require("dracula")
+
 -- ENABLE CATPPUCCIN THEME --
 -- require("catppuccin")
--- vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-mocha")
 
 -- ENABLE ONEDARKPRO THEME --
 -- require("plugins.onedarkpro")

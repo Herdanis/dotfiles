@@ -7,10 +7,12 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+# eval "$(starship init zsh)"
 # Path to your oh-my-zsh installation.
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CACHE="$HOME/.starship/cache"
 export ZSH="$HOME/.oh-my-zsh"
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH=$PATH:$(go env GOPATH)/bin

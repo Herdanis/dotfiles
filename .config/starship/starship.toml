@@ -1,0 +1,273 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+format = """
+[](#e4e5eb)\
+$os\
+[](bg:#000000 fg:#e4e5eb)\
+$directory\
+[](fg:#000000 bg:#4a4a4a)\
+$git_branch\
+$git_status\
+[▓](fg:#4a4a4a bg:#212736)\
+[▒░ ](fg:#4a4a4a bg:#212736)\
+$fill\
+$all\
+$line_break\
+$character\
+"""
+
+[fill]
+style = "fg:#bfbfbf"
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#2c615d fg:#bfbfbf"
+format = '[](fg:#2c615d)[ $time]($style)[ ](fg:#2c615d)'
+
+[os]
+disabled = false
+style = "bg:#e4e5eb fg:#090c0c"
+
+[os.symbols]
+Windows = "󰍲 "
+Ubuntu = "󰕈 "
+SUSE = " "
+Raspbian = "󰐿 "
+Mint = "󰣭 "
+Macos = "󰀵 "
+Manjaro = " "
+Linux = "󰌽 "
+Gentoo = "󰣨 "
+Fedora = "󰣛 "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "󰣇 "
+Artix = "󰣇 "
+EndeavourOS = " "
+CentOS = " "
+Debian = "󰣚 "
+Redhat = "󱄛 "
+RedHatEnterprise = "󱄛 "
+Pop = " "
+
+
+[line_break]
+disabled = false
+
+[character]
+format = "$symbol "
+success_symbol = "[◎](bold italic bright-green)"
+error_symbol = "[○](italic purple)"
+vimcmd_symbol = "[■](italic dimmed green)"
+# not supported in zsh
+vimcmd_replace_one_symbol = "◌"
+vimcmd_replace_symbol = "□"
+vimcmd_visual_symbol = "▼"
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#e3e5e5 bg:#4a4a4a)]($style)'
+
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#e3e5e5 bg:#4a4a4a)]($style)'
+
+[directory]
+style = "fg:#e3e5e5 bg:#000000"
+home_symbol = "⌂"
+truncation_length = 2
+truncation_symbol = "◈ "
+use_os_path_sep = true
+format = '[ $path ]($style bold)'
+
+[bun]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[buf]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[cmake]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[cobol]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[crystal]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[daml]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[dart]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[deno]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[dotnet]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[elixir]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[elm]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[erlang]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[fennel]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[gleam]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[gradle]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[haxe]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[helm]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[java]
+disabled = true
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[julia]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[kotlin]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[lua]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[meson]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[nim]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[nodejs]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[ocaml]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[opa]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[perl]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+disabled = true
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[pulumi]
+format = '[$symbol$stack]($style) '
+
+[purescript]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[python]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[quarto]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[raku]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[red]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[rlang]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[ruby]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[solidity]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[typst]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[swift]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[vagrant]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[vlang]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[zig]
+style = "bg:#394260"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[gcloud]
+format = '[ $project]($style) '
+style = 'green bold'
+
+[azure]
+format = '[$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue bold'

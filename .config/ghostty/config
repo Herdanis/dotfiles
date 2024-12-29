@@ -1,0 +1,4 @@
+theme = dracula
+font-size = 12.9
+command = /opt/homebrew/bin/fish --login --interactive
+
