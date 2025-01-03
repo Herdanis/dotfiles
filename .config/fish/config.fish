@@ -21,15 +21,15 @@ set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
 
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
-set fish_cursor_default block
+set fish_cursor_default line
 # Set the insert mode cursor to a line
-set fish_cursor_insert line
+set fish_cursor_insert block
 # Set the replace mode cursors to an underscore
 set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore
 # Set the external cursor to a line. The external cursor appears when a command is started.
 # The cursor shape takes the value of fish_cursor_default when fish_cursor_external is not specified.
-set fish_cursor_external line
+set fish_cursor_external block
 # The following variable can be used to configure cursor shape in
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
@@ -62,3 +62,6 @@ alias mux="tmuxinator"
 alias cat="bat"
 alias fcat="fzf --preview -m 'bat --color=always {}'"
 alias dotfile="cd ~/.dotfiles && nvim"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin

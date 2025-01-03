@@ -4,9 +4,9 @@ add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
 
 format = """
-[](#e4e5eb)\
+[ ](#F8F8F2)\
 $os\
-[](bg:#000000 fg:#e4e5eb)\
+[](bg:#000000 fg:#F8F8F2)\
 $directory\
 [](fg:#000000 bg:#4a4a4a)\
 $git_branch\
@@ -30,7 +30,7 @@ format = '[](fg:#2c615d)[ $time]($style)[ ](fg:#2c615d)'
 
 [os]
 disabled = false
-style = "bg:#e4e5eb fg:#090c0c"
+style = "bg:#F8F8F2 fg:#44475A"
 
 [os.symbols]
 Windows = "󰍲 "
@@ -79,7 +79,7 @@ style = "bg:#394260"
 format = '[[($all_status$ahead_behind )](fg:#e3e5e5 bg:#4a4a4a)]($style)'
 
 [directory]
-style = "fg:#e3e5e5 bg:#000000"
+style = "fg:#FFB86C bg:#000000"
 home_symbol = "⌂"
 truncation_length = 2
 truncation_symbol = "◈ "
