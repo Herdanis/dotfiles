@@ -21,9 +21,9 @@ set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
 
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
-set fish_cursor_default line
+set fish_cursor_default block
 # Set the insert mode cursor to a line
-set fish_cursor_insert block
+set fish_cursor_insert line
 # Set the replace mode cursors to an underscore
 set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore
