@@ -21,7 +21,9 @@ return {
       "terraformls",
       "tflint",
       "yamlls",
+      "sqlls",
       "sqls",
+      "sql-formatter",
     },
   },
 }

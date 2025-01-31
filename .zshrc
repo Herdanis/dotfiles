@@ -228,3 +228,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/herdanis/.cache/lm-studio/bin"
+
+. "$HOME/.local/bin/env"
