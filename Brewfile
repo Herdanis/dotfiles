@@ -1,3 +1,4 @@
+tap "bufbuild/buf"
 tap "derailed/popeye"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
@@ -32,6 +33,8 @@ brew "fish"
 brew "fzf"
 # WebDriver <-> Marionette proxy
 brew "geckodriver"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Audit git repos for secrets
@@ -60,6 +63,8 @@ brew "kubeshark"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Command-line interface to LiveKit
+brew "livekit-cli"
 # Run a Kubernetes cluster locally
 brew "minikube"
 # Automated testing for Ansible roles
@@ -70,14 +75,22 @@ brew "neovim"
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# HTTP load generator, inspired by rakyll/hey with tui animation
+brew "oha"
 # Generate clients, server & docs from an OpenAPI spec (v2, v3)
 brew "openapi-generator"
+# CLI for Postgres with auto-completion and syntax highlighting
+brew "pgcli"
 # Information gathering framework for phone numbers
 brew "phoneinfoga"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Object-relational database system
+brew "postgresql@17"
 # Theme for zsh
 brew "powerlevel10k"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
 # Python version management
 brew "pyenv"
 # File browser
@@ -90,6 +103,8 @@ brew "rust"
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Modern and pretty fancy file manager for the terminal
+brew "superfile"
 # User interface to the TELNET protocol
 brew "telnet"
 # Terminal multiplexer
@@ -98,6 +113,10 @@ brew "tmux"
 brew "tmuxinator"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Distributed SQL query engine for big data
+brew "trino"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # HTTP load testing tool and library
 brew "vegeta"
 # Executes a program periodically, showing output fullscreen
@@ -116,6 +135,8 @@ brew "zsh-autosuggestions"
 brew "zsh-history-substring-search"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# The best way of working with Protocol Buffers.
+brew "bufbuild/buf/buf"
 # A Kubernetes Cluster sanitizer and linter!
 brew "derailed/popeye/popeye"
 # Terraform
@@ -143,8 +164,6 @@ cask "google-cloud-sdk"
 cask "lark"
 # Interactive tool for analyzing MongoDB data
 cask "mongodb-compass"
-# Neovim Client
-cask "neovide"
 # Web browser
 cask "opera"
 # Collaboration platform for API development
@@ -153,4 +172,6 @@ cask "postman"
 cask "spotify"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+vscode "donjayamanne.githistory"
 vscode "hediet.vscode-drawio"
+vscode "mhutchie.git-graph"

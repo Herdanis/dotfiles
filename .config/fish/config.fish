@@ -62,6 +62,7 @@ alias mux="tmuxinator"
 alias cat="bat"
 alias fcat="fzf --preview -m 'bat --color=always {}'"
 alias dotfile="cd ~/.dotfiles && nvim"
+alias ssh-config="nvim ~/.ssh/config"
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin

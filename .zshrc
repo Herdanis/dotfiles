@@ -230,3 +230,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:/Users/herdanis/.cache/lm-studio/bin"
 
 . "$HOME/.local/bin/env"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/herdanis/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

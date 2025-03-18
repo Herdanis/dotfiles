@@ -14,7 +14,7 @@ $git_status\
 [▓](fg:#4a4a4a bg:#212736)\
 [▒░ ](fg:#4a4a4a bg:#212736)\
 $fill\
-$all\
+$time\
 $line_break\
 $character\
 """

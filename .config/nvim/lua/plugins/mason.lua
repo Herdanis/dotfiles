@@ -5,7 +5,6 @@ return {
   opts = {
     ensure_installed = {
       "ansible-language-server",
-      "markdownlint-cli2",
       "markdown-toc",
       "lua_ls",
       "bashls",
@@ -24,6 +23,7 @@ return {
       "sqlls",
       "sqls",
       "sql-formatter",
+      "buf",
     },
   },
 }
