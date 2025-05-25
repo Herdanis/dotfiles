@@ -21,14 +21,20 @@ brew "bat"
 brew "btop"
 # Core application library for C
 brew "glib"
+# Tool for exploring each layer in a docker image
+brew "dive"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Plugin manager for the Fish shell
+brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # WebDriver <-> Marionette proxy
@@ -75,16 +81,24 @@ brew "neovim"
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# Manage multiple Node.js versions
+brew "nvm"
 # HTTP load generator, inspired by rakyll/hey with tui animation
 brew "oha"
 # Generate clients, server & docs from an OpenAPI spec (v2, v3)
 brew "openapi-generator"
 # CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
+# Data loading tool for PostgreSQL
+brew "pgloader"
 # Information gathering framework for phone numbers
 brew "phoneinfoga"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Python package management tool
+brew "poetry"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Object-relational database system
 brew "postgresql@17"
 # Theme for zsh
@@ -125,6 +139,8 @@ brew "watch"
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
+# CLI client for the Woodpecker Continuous Integration server
+brew "woodpecker-cli"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI

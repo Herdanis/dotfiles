@@ -24,6 +24,10 @@ return {
       "sqls",
       "sql-formatter",
       "buf",
+      "gotests",
+      "golines",
+      "ast-grep",
+      "gospel",
     },
   },
 }

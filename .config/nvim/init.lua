@@ -22,6 +22,7 @@ require("onedark").load()
 -- NOTE: lSP
 require("mason").setup()
 require("mason-lspconfig").setup()
+
 -- local highlight = {
 --   "RainbowRed",
 --   "RainbowYellow",
