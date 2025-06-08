@@ -8,6 +8,7 @@ return {
       "markdown-toc",
       "lua_ls",
       "bashls",
+      "black",
       "docker_compose_language_service",
       "dockerls",
       "gopls",
