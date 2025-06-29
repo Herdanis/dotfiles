@@ -1,5 +1,6 @@
 return {
   {
+    enabled = false,
     "mfussenegger/nvim-dap",
     dependencies = {
       "nvim-neotest/nvim-nio",
