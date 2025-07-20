@@ -4,16 +4,23 @@ add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
 
 format = """
-[ ](#F8F8F2)\
+[ ](#393E46)\
 $os\
-[](bg:#000000 fg:#F8F8F2)\
+[](bg:#000000 fg:#393E46)\
 $directory\
 [](fg:#000000 bg:#4a4a4a)\
 $git_branch\
 $git_status\
+$rust\
+$golang\
+$nodejs\
+$java\
+$kotlin\
+$python\
 [▓](fg:#4a4a4a bg:#212736)\
 [▒░ ](fg:#4a4a4a bg:#212736)\
 $fill\
+$cmd_duration\
 $time\
 $line_break\
 $character\
@@ -30,7 +37,7 @@ format = '[](fg:#2c615d)[ $time]($style)[ ](fg:#2c615d)'
 
 [os]
 disabled = false
-style = "bg:#F8F8F2 fg:#44475A"
+style = "bg:#393E46 fg:#F8F8F2"
 
 [os.symbols]
 Windows = "󰍲 "
