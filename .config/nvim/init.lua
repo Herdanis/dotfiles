@@ -10,12 +10,12 @@ require("config.lazy")
 -- require("catppuccin")
 -- vim.cmd.colorscheme("catppuccin-mocha")
 
--- ENABLE ONEDARKPRO THEME --
--- require("plugins.onedarkpro")
+-- ENABLE THEME --
+-- vim.cmd("colorscheme sonokai")
 
 -- ENABLE ONEDARK THEME --
 require("onedark").setup({
-  style = "darker",
+  style = "warmer",
 })
 require("onedark").load()
 

@@ -1,4 +1,5 @@
-theme = dracula
+theme = Dark+
 font-size = 12
+shell-integration = fish
 command = /opt/homebrew/bin/fish --login --interactive
 macos-option-as-alt = true

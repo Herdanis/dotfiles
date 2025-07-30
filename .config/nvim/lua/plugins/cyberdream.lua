@@ -1,7 +1,6 @@
 return {
   {
-    "navarasu/onedark.nvim",
-    -- "joshdick/onedark.vim",
+    "scottmckendry/cyberdream.nvim",
     priority = 1000, -- Ensure it loads first
   },
 }
