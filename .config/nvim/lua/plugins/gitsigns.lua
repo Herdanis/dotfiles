@@ -21,12 +21,12 @@ return {
       },
     })
     local wk = require("which-key")
-    wk.register({
-      ["<leader>gS"] = {
-        name = "Gitsigns",
-        p = { ":Gitsigns preview_hunk<CR>", "Preview hunk" },
-        r = { ":Gitsigns reset_hunk<CR>", "Reset hunk" },
-        a = { ":Gitsigns stage_hunk<CR>", "Stage hunk" },
+    wk.add({
+      {
+        { "<leader>gS", group = "Gitsigns" },
+        { "<leader>gSa", ":Gitsigns stage_hunk<CR>", desc = "Stage hunk" },
+        { "<leader>gSp", ":Gitsigns preview_hunk<CR>", desc = "Preview hunk" },
+        { "<leader>gSr", ":Gitsigns reset_hunk<CR>", desc = "Reset hunk" },
       },
     })
   end,

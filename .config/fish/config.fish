@@ -5,6 +5,10 @@
 if status is-interactive
 end
 
+if test -f ~/.config/fish/credentials.fish
+    source ~/.config/fish/credentials.fish
+end
+
 set -Ux STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 set -Ux STARSHIP_CACHE "$HOME/.starship/cache"
 starship init fish | source
