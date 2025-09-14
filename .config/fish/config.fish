@@ -69,6 +69,7 @@ alias dotfile="cd ~/.dotfiles && nvim"
 alias dotconfig="cd ~/.config && nvim"
 alias ssh-config="nvim ~/.ssh/config"
 alias brew-export="brew bundle dump --describe"
+alias k9s-logs="cd $HOME/Library/Application\ Support/k9s/screen-dumps/ && nvim"
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin
