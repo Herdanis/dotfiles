@@ -24,3 +24,30 @@ _darcs
 ^/COPYING
 
 Brewfile
+
+# Ignore README and documentation in subdirectories
+\.config/nvim/README\.md
+\.config/fish/README\.md
+\.config/.*/README\.md
+
+# Ignore backup files
+.*\.bak
+.*\.backup
+.*\.old
+.*\.orig
+
+# Ignore temporary files
+.*\.tmp
+.*\.swp
+.*\.swo
+\.DS_Store
+
+# Ignore lock files that shouldn't be stowed
+\.config/nvim/lazy-lock\.json
+\.config/nvim/\.luarc\.json
+
+# Ignore LICENSE files in subdirectories
+\.config/.*/LICENSE.*
+
+# Ignore archive directory
+^/archive
