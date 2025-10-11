@@ -1,5 +1,6 @@
 tap "bufbuild/buf"
 tap "derailed/popeye"
+tap "fleet/local"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -7,12 +8,15 @@ tap "jandedobbeleer/oh-my-posh"
 tap "pulumi/tap"
 tap "teamookla/speedtest"
 tap "tnk-studio/tools"
+tap "wickenico/wailbrew"
+# Run your GitHub Actions locally
+brew "act"
 # Simple, modern, secure file encryption
 brew "age"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -25,6 +29,8 @@ brew "glib"
 brew "dive"
 # Command-line tool for DigitalOcean
 brew "doctl"
+# Text to speech, software speech synthesizer
+brew "espeak"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
@@ -45,14 +51,28 @@ brew "gh"
 brew "git"
 # Audit git repos for secrets
 brew "gitleaks"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Fast linters runner for Go
 brew "golangci-lint"
+# Develop LLM Apps in Natural Language
+brew "gptscript"
+# Interactive web UI for gRPC, along the lines of postman
+brew "grpcui"
 # Kubernetes package manager
 brew "helm"
 # Deploy Kubernetes Helm Charts
 brew "helmfile"
+# HTTP load generator, ApacheBench (ab) replacement
+brew "hey"
+# Istio configuration command-line utility
+brew "istioctl"
+# Platform built on V8 to build network applications
+brew "node"
+# Interactive environments for writing and running code
+brew "jupyterlab"
 # Modern load testing tool, using Go and JavaScript
 brew "k6"
 # Kubernetes CLI To Manage Your Clusters In Style!
@@ -79,8 +99,6 @@ brew "molecule"
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # HTTP load generator, inspired by rakyll/hey with tui animation
@@ -95,6 +113,8 @@ brew "pgloader"
 brew "phoneinfoga"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Python package management tool
 brew "poetry"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -103,16 +123,22 @@ brew "poppler"
 brew "postgresql@17"
 # Theme for zsh
 brew "powerlevel10k"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit", link: false
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # File browser
 brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Editor of encrypted files
+brew "sops"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -125,8 +151,6 @@ brew "telnet"
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Distributed SQL query engine for big data
 brew "trino"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -159,11 +183,17 @@ brew "derailed/popeye/popeye"
 brew "hashicorp/tap/terraform"
 # Prompt theme engine for any shell
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
-# Pulumi - Modern Infrastructure as Code. Any cloud, any language 
+# Pulumi - Modern Infrastructure as Code. Any cloud, any language
 brew "pulumi/tap/pulumi"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 brew "tnk-studio/tools/lazykube"
+# Command-line interface for 1Password
+cask "1password-cli"
+# Distribution of the Python and R programming languages for scientific computing
+cask "anaconda"
+# UI to create reproducible developer environments based on a devcontainer.json
+cask "devpod"
 # Voice and text chat software
 cask "discord"
 # Web browser focusing on privacy
@@ -172,22 +202,33 @@ cask "duckduckgo"
 cask "firefox"
 cask "font-3270-nerd-font"
 cask "font-symbols-only-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "google-cloud-sdk"
+# Open Source Multimedia Framework
+cask "gstreamer-runtime"
 # Project management software
 cask "lark"
 # Interactive tool for analyzing MongoDB data
 cask "mongodb-compass"
+# Developer IDE or Management Environment for Neo4j instances
+cask "neo4j-desktop"
 # Web browser
 cask "opera"
 # Collaboration platform for API development
 cask "postman"
 # Music streaming service
 cask "spotify"
+# Manage Homebrew packages with a UI
+cask "wailbrew"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+# Compatibility layer to run Windows applications
+cask "wine-stable"
 vscode "donjayamanne.githistory"
 vscode "hediet.vscode-drawio"
 vscode "mhutchie.git-graph"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode.remote-explorer"

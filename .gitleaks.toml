@@ -1,0 +1,61 @@
+# Gitleaks configuration for dotfiles
+title = "Gitleaks config for dotfiles security"
+
+[extend]
+# Use default rules
+useDefault = true
+
+[allowlist]
+description = "Allowlist for known safe patterns"
+
+# Allow template files
+paths = [
+  '''credentials\.fish\.template$''',
+  '''\.example$''',
+  '''\.sample$''',
+]
+
+# Allowlist patterns that are safe
+regexes = [
+  # Example API keys in documentation
+  '''(your_key|YOUR_KEY|<your-key>|example|EXAMPLE)''',
+  # Placeholder tokens
+  '''(sk-\.\.\.|ghp_\.\.\.)''',
+]
+
+[[rules]]
+id = "fish-credentials-file"
+description = "Detect actual credentials.fish file being committed"
+regex = '''credentials\.fish$'''
+path = '''credentials\.fish$'''
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key"
+regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
+
+[[rules]]
+id = "openai-api-key"
+description = "OpenAI API Key"
+regex = '''sk-[a-zA-Z0-9]{48}'''
+
+[[rules]]
+id = "anthropic-api-key"
+description = "Anthropic API Key"
+regex = '''sk-ant-[a-zA-Z0-9\-]{95,}'''
+
+[[rules]]
+id = "github-token"
+description = "GitHub Token"
+regex = '''ghp_[a-zA-Z0-9]{36}'''
+tags = ["github", "token"]
+
+[[rules]]
+id = "google-api-key"
+description = "Google API Key"
+regex = '''AIza[0-9A-Za-z\\-_]{35}'''
+
+[[rules]]
+id = "gcp-service-account"
+description = "Google Service Account"
+regex = '''\"type\": \"service_account\"'''

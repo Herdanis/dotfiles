@@ -1,0 +1,76 @@
+# Pre-commit hooks for dotfiles security
+# See https://pre-commit.com for more information
+# Install: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Gitleaks - Secret/credential scanning
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+        name: Detect hardcoded secrets (gitleaks)
+        args: ['protect', '--verbose', '--redact', '--staged', '--config', '.gitleaks.toml']
+
+  # General security and quality checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Prevent large files
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+        exclude: ^(.config/nvim/lazy-lock.json)$
+
+      # Filesystem checks
+      - id: check-case-conflict
+      - id: check-merge-conflict
+
+      # Syntax checks
+      - id: check-yaml
+        exclude: ^(.config/tmux/plugins/)
+      - id: check-json
+
+      # Security
+      - id: detect-private-key
+
+      # Code quality
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+
+  # Local custom checks
+  - repo: local
+    hooks:
+      # Block credentials.fish
+      - id: block-credentials
+        name: Block credentials.fish from commit
+        entry: bash
+        language: system
+        pass_filenames: false
+        always_run: true
+        args:
+          - -c
+          - |
+            if git diff --cached --name-only | grep -E "credentials\.fish$|\.env$" | grep -v "\.template$"; then
+              echo "❌ ERROR: Credentials file detected!"
+              echo "   Files like 'credentials.fish' and '.env' should not be committed."
+              echo "   Use '.template' versions instead."
+              exit 1
+            fi
+
+      # Check for sensitive patterns in documentation
+      - id: check-sensitive-info
+        name: Check for potentially sensitive information
+        entry: bash
+        language: system
+        files: '\.(md|yaml|yml|json)$'
+        args:
+          - -c
+          - |
+            # This hook checks for patterns that might indicate sensitive information
+            # Customize the patterns below based on your needs
+            if git diff --cached --name-only | grep -E '\.(md|yaml|yml|json)$' | xargs grep -E "(CHANGEME|REPLACEME|TODO_SECURITY)" 2>/dev/null; then
+              echo "⚠️  Note: Found placeholder patterns in documentation"
+              echo "   Review the files to ensure no sensitive info is committed."
+            fi
