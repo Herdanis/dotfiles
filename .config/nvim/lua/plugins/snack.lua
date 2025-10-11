@@ -1,13 +1,51 @@
+-- ============================================================================
+-- Snacks.nvim - Collection of Neovim Mini-plugins
+-- ============================================================================
+-- Snacks provides a comprehensive suite of small, focused utilities
+-- Created by folke (author of LazyVim, lazy.nvim, noice.nvim, etc.)
+--
+-- Plugin: https://github.com/folke/snacks.nvim
+--
+-- Enabled Features:
+--   - bigfile: Performance optimizations for large files
+--   - dashboard: Startup dashboard with recent files
+--   - indent: Indent guides with scope highlighting
+--   - input: Enhanced vim.ui.input
+--   - notifier: Notification system (replaces notify.nvim)
+--   - quickfile: Fast file opening
+--   - scope: Scope-aware operations
+--   - scroll: Smooth scrolling
+--   - statuscolumn: Enhanced status column (line numbers, signs, folds)
+--   - words: Word highlighting under cursor
+--   - picker: Fuzzy finder (currently disabled - using alternative)
+--   - explorer: File explorer (currently disabled - using neo-tree)
+--
+-- Keybinding Groups:
+--   <leader><space>  - Smart file finder
+--   <leader>f*       - File operations (find, recent, config)
+--   <leader>g*       - Git operations (branches, log, status, diff)
+--   <leader>s*       - Search operations (grep, buffers, symbols)
+--   <leader>u*       - UI toggles (spell, wrap, diagnostics)
+--   gd/gr/gI/gy      - LSP navigation
+--   <leader>z/Z      - Zen mode and zoom
+--   <C-/>            - Toggle terminal
+--
+-- This configuration includes 150+ keybindings documented below
+-- ============================================================================
+
 return {
   "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
+  priority = 1000,  -- Load early for dashboard
+  lazy = false,     -- Not lazy-loaded (needed for various features)
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    -- -------------------------------------------------------------------------
+    -- Enabled Feature Modules
+    -- -------------------------------------------------------------------------
+    bigfile = { enabled = true },     -- Optimize performance for large files
+    dashboard = { enabled = true },   -- Startup dashboard
     explorer = {
-      enabled = false,
+      enabled = false,                -- Disabled - using neo-tree instead
       file = {
         show_hidden = true,
       },

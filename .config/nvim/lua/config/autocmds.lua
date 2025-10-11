@@ -1,4 +1,30 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- ============================================================================
+-- Auto Commands Configuration
+-- ============================================================================
+-- Custom autocommands that execute automatically on specific events
+-- This file is automatically loaded on the VeryLazy event
+--
+-- LazyVim Default Autocommands:
+--   https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+--
+-- Autocommand Events Reference:
+--   :help autocmd-events
+--   :help nvim_create_autocmd
+--
+-- Common Events:
+--   BufReadPre  - Before reading a file into a buffer
+--   BufRead     - After reading a file into a buffer
+--   BufEnter    - After entering a buffer
+--   FileType    - When 'filetype' is set
+--   VimEnter    - After Vim finishes starting up
+--   InsertEnter - When starting Insert mode
+--   CursorHold  - When cursor hasn't moved for a while
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- Custom Autocommands
+-- ----------------------------------------------------------------------------
+-- Add your custom autocommands below
+
+-- Example: Set colorscheme (currently disabled, using init.lua instead)
 -- vim.cmd("colorscheme onedark_vivid")

@@ -1,6 +1,36 @@
-theme = Dark+
-font-size = 12
-shell-integration = fish
+# ============================================================================
+# Ghostty Terminal Configuration
+# ============================================================================
+# Ghostty: Modern, fast, GPU-accelerated terminal emulator
+# Written in Zig for maximum performance
+#
+# Documentation: https://ghostty.org/docs
+# Configuration reference: https://ghostty.org/docs/config
+#
+# This file configures appearance, behavior, keybindings, and shell integration
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Appearance
+# ----------------------------------------------------------------------------
+theme = Dark+           # Color scheme (VS Code Dark+ theme)
+font-size = 12          # Font size in points
+
+# ----------------------------------------------------------------------------
+# Shell Integration
+# ----------------------------------------------------------------------------
+shell-integration = fish  # Enable Fish shell-specific features
+# Launch Fish shell as login shell with interactive mode
 command = /opt/homebrew/bin/fish --login --interactive
+
+# ----------------------------------------------------------------------------
+# macOS-Specific Settings
+# ----------------------------------------------------------------------------
+# Treat Option key as Alt modifier (important for terminal keybindings)
 macos-option-as-alt = true
+
+# ----------------------------------------------------------------------------
+# Custom Keybindings
+# ----------------------------------------------------------------------------
+# Shift+Enter: Send escape sequence for newline (useful for some CLI tools)
 keybind = shift+enter=text:\x1b\r

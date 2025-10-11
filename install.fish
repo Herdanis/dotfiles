@@ -1,8 +1,35 @@
 #!/usr/bin/env fish
 
+# ============================================================================
 # Dotfiles Installation Script
-# Automates the setup of dotfiles on a fresh macOS system
+# ============================================================================
+# Automates the complete setup of dotfiles on a fresh macOS system
+#
+# This script will:
+#   1. Install Homebrew (if not present)
+#   2. Install GNU Stow for symlink management
+#   3. Backup existing configurations
+#   4. Install all packages from Brewfile
+#   5. Deploy dotfiles using Stow
+#   6. Set Fish as default shell
+#   7. Install Neovim plugins
+#   8. Setup Tmux Plugin Manager (TPM)
+#
+# Usage:
+#   cd ~/.dotfiles
+#   ./install.fish
+#
+# Requirements:
+#   - macOS (Darwin)
+#   - Internet connection
+#   - Admin privileges (for chsh command)
+#
+# Safety:
+#   - Creates timestamped backups before any changes
+#   - Non-destructive: can be re-run safely
+# ============================================================================
 
+# Configuration
 set -l DOTFILES_DIR (pwd)
 set -l BACKUP_DIR "$HOME/.dotfiles-backup-"(date +%Y%m%d-%H%M%S)
 

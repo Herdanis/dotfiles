@@ -1,60 +1,130 @@
-# Gitleaks configuration for dotfiles
+# ============================================================================
+# Gitleaks Configuration for Dotfiles
+# ============================================================================
+# Gitleaks: Security tool to detect hardcoded secrets and credentials
+# This configuration customizes secret detection for dotfiles repository
+#
+# Documentation: https://github.com/gitleaks/gitleaks
+#
+# Usage:
+#   - Via pre-commit: Automatic on every commit
+#   - Manual scan: gitleaks detect --config .gitleaks.toml
+#   - Scan staged: gitleaks protect --staged --config .gitleaks.toml
+# ============================================================================
+
 title = "Gitleaks config for dotfiles security"
 
+# ----------------------------------------------------------------------------
+# Extend Default Rules
+# ----------------------------------------------------------------------------
+# Inherit gitleaks' built-in detection rules for common secrets
+# Includes patterns for: AWS keys, GitHub tokens, Slack webhooks, etc.
 [extend]
-# Use default rules
-useDefault = true
+useDefault = true  # Use gitleaks default ruleset as baseline
+
+# ============================================================================
+# Allowlist Configuration
+# ============================================================================
+# Define patterns and files that should be ignored during scanning
+# Use this to prevent false positives on known-safe content
+# ============================================================================
 
 [allowlist]
 description = "Allowlist for known safe patterns"
 
-# Allow template files
+# ----------------------------------------------------------------------------
+# Safe File Paths
+# ----------------------------------------------------------------------------
+# Files matching these patterns will be excluded from secret scanning
+# Typically used for template files and example configurations
 paths = [
-  '''credentials\.fish\.template$''',
-  '''\.example$''',
-  '''\.sample$''',
+  '''credentials\.fish\.template$''',  # Credential template file
+  '''\.example$''',                     # Example configuration files
+  '''\.sample$''',                      # Sample configuration files
 ]
 
-# Allowlist patterns that are safe
+# ----------------------------------------------------------------------------
+# Safe Content Patterns
+# ----------------------------------------------------------------------------
+# Regex patterns that match non-sensitive placeholder text
+# Prevents false positives on documentation and examples
 regexes = [
-  # Example API keys in documentation
+  # Placeholder API keys in documentation
   '''(your_key|YOUR_KEY|<your-key>|example|EXAMPLE)''',
-  # Placeholder tokens
+  # Truncated/redacted tokens in examples
   '''(sk-\.\.\.|ghp_\.\.\.)''',
 ]
 
+# ============================================================================
+# Custom Detection Rules
+# ============================================================================
+# Project-specific rules for detecting secrets unique to this repository
+# These complement the default gitleaks rules
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Fish Shell Credentials File
+# ----------------------------------------------------------------------------
+# Prevents committing the actual credentials.fish file
+# (Only .template version should be committed)
 [[rules]]
 id = "fish-credentials-file"
 description = "Detect actual credentials.fish file being committed"
 regex = '''credentials\.fish$'''
 path = '''credentials\.fish$'''
 
+# ----------------------------------------------------------------------------
+# AWS Credentials
+# ----------------------------------------------------------------------------
+# Detects AWS access keys and secret keys
+# Prefixes: AKIA (access key), ASIA (temporary), AGPA/AIDA/AROA (other types)
 [[rules]]
 id = "aws-access-key"
 description = "AWS Access Key"
 regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
 
+# ----------------------------------------------------------------------------
+# AI Service API Keys
+# ----------------------------------------------------------------------------
+
+# OpenAI API Key (ChatGPT, GPT-4, DALL-E, etc.)
+# Format: sk-{48 alphanumeric characters}
 [[rules]]
 id = "openai-api-key"
 description = "OpenAI API Key"
 regex = '''sk-[a-zA-Z0-9]{48}'''
 
+# Anthropic API Key (Claude AI)
+# Format: sk-ant-{95+ alphanumeric characters with hyphens}
 [[rules]]
 id = "anthropic-api-key"
 description = "Anthropic API Key"
 regex = '''sk-ant-[a-zA-Z0-9\-]{95,}'''
 
+# ----------------------------------------------------------------------------
+# GitHub Tokens
+# ----------------------------------------------------------------------------
+# Detects GitHub Personal Access Tokens
+# Format: ghp_{36 alphanumeric characters}
 [[rules]]
 id = "github-token"
 description = "GitHub Token"
 regex = '''ghp_[a-zA-Z0-9]{36}'''
 tags = ["github", "token"]
 
+# ----------------------------------------------------------------------------
+# Google Cloud Platform
+# ----------------------------------------------------------------------------
+
+# Google API Key
+# Format: AIza{35 alphanumeric characters with hyphens/underscores}
 [[rules]]
 id = "google-api-key"
 description = "Google API Key"
 regex = '''AIza[0-9A-Za-z\\-_]{35}'''
 
+# Google Service Account JSON
+# Detects GCP service account key files by checking for identifying field
 [[rules]]
 id = "gcp-service-account"
 description = "Google Service Account"

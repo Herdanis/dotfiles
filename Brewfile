@@ -1,14 +1,46 @@
-tap "bufbuild/buf"
-tap "derailed/popeye"
-tap "fleet/local"
-tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "jandedobbeleer/oh-my-posh"
-tap "pulumi/tap"
-tap "teamookla/speedtest"
-tap "tnk-studio/tools"
-tap "wickenico/wailbrew"
+# ============================================================================
+# Homebrew Bundle File (Brewfile)
+# ============================================================================
+# Defines all packages, casks, and taps for Homebrew package manager
+# This file enables reproducible development environment setup
+#
+# Usage:
+#   brew bundle install              # Install all packages
+#   brew bundle dump --describe      # Regenerate this file with descriptions
+#   brew bundle check                # Check if packages are installed
+#   brew bundle cleanup              # Uninstall packages not in this file
+#
+# Package Categories:
+#   - CLI Tools: Development utilities and command-line tools
+#   - Languages: Go, Python, Node.js, Rust
+#   - Cloud: AWS, Azure, GCP, DigitalOcean
+#   - Kubernetes: kubectl, helm, k9s, istio, argocd
+#   - Containers: Docker, lazydocker
+#   - Terminal: Fish, Tmux, Neovim, Starship
+#   - GUI Apps: Ghostty, Postman, Discord, browsers
+#   - Fonts: Nerd Fonts for terminal icons
+#
+# Documentation: https://github.com/Homebrew/homebrew-bundle
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Third-Party Taps (Additional Package Repositories)
+# ----------------------------------------------------------------------------
+tap "bufbuild/buf"                # Protocol Buffers tools
+tap "derailed/popeye"             # Kubernetes cluster sanitizer
+tap "fleet/local"                 # Fleet tools
+tap "hashicorp/tap"               # Terraform, Vault, Consul
+tap "homebrew/bundle"             # Brewfile support
+tap "homebrew/cask-fonts"         # Fonts (Nerd Fonts)
+tap "jandedobbeleer/oh-my-posh"   # Oh My Posh prompt
+tap "pulumi/tap"                  # Pulumi Infrastructure as Code
+tap "teamookla/speedtest"         # Speedtest CLI
+tap "tnk-studio/tools"            # Lazykube
+tap "wickenico/wailbrew"          # Wailbrew GUI for Homebrew
+
+# ============================================================================
+# CLI Tools & Utilities
+# ============================================================================
 # Run your GitHub Actions locally
 brew "act"
 # Simple, modern, secure file encryption

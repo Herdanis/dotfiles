@@ -1,10 +1,29 @@
-# Pre-commit hooks for dotfiles security
-# See https://pre-commit.com for more information
-# Install: pre-commit install
-# Run manually: pre-commit run --all-files
+# ============================================================================
+# Pre-commit Hooks Configuration
+# ============================================================================
+# Automated security and quality checks that run before each git commit
+# These hooks help prevent accidental commits of secrets, large files, and
+# code quality issues
+#
+# Documentation: https://pre-commit.com
+#
+# Setup:
+#   1. Install pre-commit: brew install pre-commit
+#   2. Install hooks: pre-commit install
+#   3. Update hooks: pre-commit autoupdate
+#
+# Usage:
+#   - Automatic: Runs on every 'git commit'
+#   - Manual: pre-commit run --all-files
+#   - Skip (emergency only): git commit --no-verify
+# ============================================================================
 
 repos:
-  # Gitleaks - Secret/credential scanning
+  # --------------------------------------------------------------------------
+  # Secret Scanning
+  # --------------------------------------------------------------------------
+  # Gitleaks: Scans for hardcoded secrets, API keys, and credentials
+  # Uses custom rules defined in .gitleaks.toml
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.21.2
     hooks:
@@ -12,37 +31,59 @@ repos:
         name: Detect hardcoded secrets (gitleaks)
         args: ['protect', '--verbose', '--redact', '--staged', '--config', '.gitleaks.toml']
 
-  # General security and quality checks
+  # --------------------------------------------------------------------------
+  # General Security and Quality Checks
+  # --------------------------------------------------------------------------
+  # Pre-commit hooks: Collection of useful git hooks for code quality
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
-      # Prevent large files
+      # --------------------------------------------------------------------
+      # File Size Check
+      # --------------------------------------------------------------------
+      # Prevent accidentally committing large files (>1MB)
+      # Excludes: lazy-lock.json (Neovim plugin lock file)
       - id: check-added-large-files
         args: ['--maxkb=1000']
         exclude: ^(.config/nvim/lazy-lock.json)$
 
-      # Filesystem checks
-      - id: check-case-conflict
-      - id: check-merge-conflict
+      # --------------------------------------------------------------------
+      # Filesystem Checks
+      # --------------------------------------------------------------------
+      - id: check-case-conflict      # Detect case-sensitive filename conflicts
+      - id: check-merge-conflict     # Detect unresolved merge conflict markers
 
-      # Syntax checks
-      - id: check-yaml
-        exclude: ^(.config/tmux/plugins/)
-      - id: check-json
+      # --------------------------------------------------------------------
+      # Syntax Validation
+      # --------------------------------------------------------------------
+      - id: check-yaml               # Validate YAML syntax
+        exclude: ^(.config/tmux/plugins/)  # Exclude tmux plugin YAML files
+      - id: check-json               # Validate JSON syntax
 
-      # Security
-      - id: detect-private-key
+      # --------------------------------------------------------------------
+      # Security Checks
+      # --------------------------------------------------------------------
+      - id: detect-private-key       # Prevent committing private SSH/PGP keys
 
-      # Code quality
-      - id: trailing-whitespace
-        args: [--markdown-linebreak-ext=md]
-      - id: end-of-file-fixer
-      - id: mixed-line-ending
+      # --------------------------------------------------------------------
+      # Code Quality & Formatting
+      # --------------------------------------------------------------------
+      - id: trailing-whitespace      # Remove trailing whitespace
+        args: [--markdown-linebreak-ext=md]  # Preserve markdown line breaks
+      - id: end-of-file-fixer        # Ensure files end with a newline
+      - id: mixed-line-ending        # Detect mixed line endings (CRLF/LF)
 
-  # Local custom checks
+  # --------------------------------------------------------------------------
+  # Custom Local Hooks
+  # --------------------------------------------------------------------------
+  # Project-specific hooks that run custom bash scripts
   - repo: local
     hooks:
-      # Block credentials.fish
+      # --------------------------------------------------------------------
+      # Credential File Protection
+      # --------------------------------------------------------------------
+      # Prevents accidental commit of sensitive credential files
+      # Blocks: credentials.fish, .env (but allows .template versions)
       - id: block-credentials
         name: Block credentials.fish from commit
         entry: bash
@@ -59,7 +100,12 @@ repos:
               exit 1
             fi
 
-      # Check for sensitive patterns in documentation
+      # --------------------------------------------------------------------
+      # Sensitive Information Warning
+      # --------------------------------------------------------------------
+      # Checks documentation files for placeholder patterns that might
+      # indicate incomplete security review
+      # This is a WARNING only, not a blocker
       - id: check-sensitive-info
         name: Check for potentially sensitive information
         entry: bash

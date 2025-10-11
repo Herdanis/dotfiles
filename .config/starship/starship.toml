@@ -1,5 +1,32 @@
+# ============================================================================
+# Starship Prompt Configuration
+# ============================================================================
+# Starship: Fast, customizable, cross-shell prompt written in Rust
+# Shows context-aware information: git status, language versions, cloud provider, etc.
+#
+# Documentation: https://starship.rs/config/
+# Presets: https://starship.rs/presets/
+#
+# This configuration defines:
+#   - Prompt format and layout
+#   - Module appearance (colors, symbols, formats)
+#   - Language version detection (Node.js, Python, Go, Rust, etc.)
+#   - Git integration
+#   - Cloud provider context (AWS, Azure, GCP)
+#   - Command execution time
+# ============================================================================
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# ============================================================================
+# Prompt Format
+# ============================================================================
+# Defines the order and layout of prompt modules
+# $module = insert that module's output
+# \ = line continuation
+# $line_break = insert a newline
+# See: https://starship.rs/config/#prompt
+# ============================================================================
 
 format = """
   $os\
@@ -60,9 +87,27 @@ $line_break\
 $character\
 """
 
+# ============================================================================
+# General Prompt Settings
+# ============================================================================
+
+# Add an empty line before each prompt for readability
 add_newline = true
+
+# Multi-line command continuation prompt indicator
 continuation_prompt = "[▸▹ ](dimmed white)"
 
+# ============================================================================
+# Module Configurations
+# ============================================================================
+# Individual module settings below control appearance and behavior
+# Each [module_name] section configures that specific prompt element
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Command Duration
+# ----------------------------------------------------------------------------
+# Shows execution time for commands that take longer than threshold
 [cmd_duration]
 format = "[⏱ $duration]($style)"
 min_time = 1000

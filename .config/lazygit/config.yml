@@ -1,2 +1,20 @@
+# ============================================================================
+# Lazygit Configuration
+# ============================================================================
+# Lazygit: Terminal UI for git commands
+# Provides an intuitive interface for git operations
+#
+# Documentation: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+# Keybindings: https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md
+#
+# Access within Neovim: <leader>gg
+# Standalone: lazygit command
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Operating System Settings
+# ----------------------------------------------------------------------------
 os:
+  # Use Neovim as the default editor for commit messages and file editing
+  # Options: 'nvim', 'vim', 'emacs', 'nano', 'vscode', etc.
   editPreset: 'nvim'
