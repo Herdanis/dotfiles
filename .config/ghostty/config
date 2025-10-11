@@ -13,13 +13,13 @@
 # ----------------------------------------------------------------------------
 # Appearance
 # ----------------------------------------------------------------------------
-theme = Dark+           # Color scheme (VS Code Dark+ theme)
-font-size = 12          # Font size in points
+theme = Dark+
+font-size = 12
 
 # ----------------------------------------------------------------------------
 # Shell Integration
 # ----------------------------------------------------------------------------
-shell-integration = fish  # Enable Fish shell-specific features
+shell-integration = fish
 # Launch Fish shell as login shell with interactive mode
 command = /opt/homebrew/bin/fish --login --interactive
 
