@@ -23,8 +23,8 @@
 
 function buildx-push
     docker buildx build \
-        --progress plain --push \        # Plain output and push after build
-        --tag $argv[1] \                 # Image name and tag (first argument)
-        --platform linux/amd64 \         # Target platform architecture
-        --file ./Dockerfile .            # Use Dockerfile in current directory
+        --progress plain --push \
+        --tag $argv[1] \
+        --platform linux/amd64 \
+        --file ./Dockerfile .
 end

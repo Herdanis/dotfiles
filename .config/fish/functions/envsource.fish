@@ -29,8 +29,8 @@
 function envsource
     # Process each line from the file
     for line in (cat $argv | grep -v '^#' |  grep -v '^\s*$' | sed -e 's/=/ /' -e "s/'//g" -e 's/"//g' )
-        set export (string split ' ' $line)  # Split KEY value into array
-        set -gx $export[1] $export[2]        # Export as global environment variable
-        echo "Exported key $export[1]"       # Provide feedback
+        set export (string split ' ' $line)
+        set -gx $export[1] $export[2]
+        echo "Exported key $export[1]"
     end
 end
