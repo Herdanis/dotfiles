@@ -165,3 +165,6 @@ alias brew-export="brew bundle dump --describe"         # Export Brewfile with d
 # ----------------------------------------------------------------------------
 # LM Studio CLI path (AI/LLM development tool)
 set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin
+
+# opencode
+fish_add_path /Users/herdanis/.opencode/bin
