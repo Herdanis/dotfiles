@@ -34,8 +34,8 @@ end
 # Prompt Configuration (Starship)
 # ----------------------------------------------------------------------------
 # Starship: Cross-shell prompt with Git integration and customization
-set -Ux STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"  # Custom config location
-set -Ux STARSHIP_CACHE "$HOME/.starship/cache"                   # Cache directory
+set -Ux STARSHIP_CONFIG "$HOME/.config/starship/starship.toml" # Custom config location
+set -Ux STARSHIP_CACHE "$HOME/.starship/cache" # Cache directory
 starship init fish | source
 
 # ----------------------------------------------------------------------------
@@ -54,7 +54,7 @@ fzf --fish | source
 # ----------------------------------------------------------------------------
 # Default Editor
 # ----------------------------------------------------------------------------
-set -Ux EDITOR nvim  # Use Neovim as default editor for git, etc.
+set -Ux EDITOR nvim # Use Neovim as default editor for git, etc.
 
 # ----------------------------------------------------------------------------
 # Go Language Path
@@ -76,12 +76,12 @@ set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
 # Vim-style Cursor Configuration
 # ----------------------------------------------------------------------------
 # Emulate Vim's cursor shape behavior for different modes
-set fish_cursor_default block           # Normal/Visual mode: block cursor
-set fish_cursor_insert line              # Insert mode: line cursor
-set fish_cursor_replace_one underscore   # Single-character replace: underscore
-set fish_cursor_replace underscore       # Replace mode: underscore
-set fish_cursor_external block           # External commands: block cursor
-set fish_cursor_visual block             # Visual mode: block cursor (same as default)
+set fish_cursor_default block # Normal/Visual mode: block cursor
+set fish_cursor_insert line # Insert mode: line cursor
+set fish_cursor_replace_one underscore # Single-character replace: underscore
+set fish_cursor_replace underscore # Replace mode: underscore
+set fish_cursor_external block # External commands: block cursor
+set fish_cursor_visual block # Visual mode: block cursor (same as default)
 
 # ============================================================================
 # Shell Aliases
@@ -93,72 +93,78 @@ set fish_cursor_visual block             # Visual mode: block cursor (same as de
 # ----------------------------------------------------------------------------
 # Git Aliases
 # ----------------------------------------------------------------------------
-alias gitlog="git log --all --decorate --oneline --graph"  # Pretty git log with graph
-alias lzgit="lazygit"                                       # Terminal UI for git
+alias gitlog="git log --all --decorate --oneline --graph" # Pretty git log with graph
+alias lzgit="lazygit" # Terminal UI for git
 
 # ----------------------------------------------------------------------------
 # Kubernetes & Container Orchestration
 # ----------------------------------------------------------------------------
-alias k="kubectl"                        # Kubernetes CLI shortcut
-alias h="helm"                           # Helm package manager
-alias kali="docker exec -it kali bash"   # Quick access to Kali Linux container
-alias k9s-logs="cd $HOME/Library/Application\ Support/k9s/screen-dumps/ && nvim"  # View k9s logs
+alias k="kubectl" # Kubernetes CLI shortcut
+alias h="helm" # Helm package manager
+alias kali="docker exec -it kali bash" # Quick access to Kali Linux container
+alias k9s-logs="cd $HOME/Library/Application\ Support/k9s/screen-dumps/ && nvim" # View k9s logs
 
 # ----------------------------------------------------------------------------
 # Editor Aliases
 # ----------------------------------------------------------------------------
-alias n="nvim"                                    # Quick Neovim launch
-alias vim="nvim"                                  # Replace vim with neovim
-alias gvim="nvim"                                 # Replace gvim with neovim
-alias nremote="nvim --remote-ui --server"         # Start Neovim in server mode
+alias n="nvim" # Quick Neovim launch
+alias vim="nvim" # Replace vim with neovim
+alias gvim="nvim" # Replace gvim with neovim
+alias nremote="nvim --remote-ui --server" # Start Neovim in server mode
 
 # ----------------------------------------------------------------------------
 # Tmux (Terminal Multiplexer)
 # ----------------------------------------------------------------------------
-alias t="tmux"              # Quick tmux launch
-alias ta="tmux a -t"        # Attach to tmux session
-alias tn="tmux new -s"      # Create new named tmux session
-alias mux="tmuxinator"      # Tmux session manager
+alias t="tmux" # Quick tmux launch
+alias ta="tmux a -t" # Attach to tmux session
+alias tn="tmux new -s" # Create new named tmux session
+alias mux="tmuxinator" # Tmux session manager
 
 # ----------------------------------------------------------------------------
 # Python Development
 # ----------------------------------------------------------------------------
-alias venv="source .venv/bin/activate.fish"  # Activate Python virtual environment
-alias penv="python3.12 -m venv .venv"        # Create new virtual environment
-alias p="python3.12"                          # Python 3.12 shortcut
-alias python="python3.12"                     # Default to Python 3.12
-alias pip-freeze="pip freeze > requirements.txt"  # Export Python dependencies
+alias venv="source .venv/bin/activate.fish" # Activate Python virtual environment
+alias penv="python3.12 -m venv .venv" # Create new virtual environment
+alias p="python3.12" # Python 3.12 shortcut
+alias python="python3.12" # Default to Python 3.12
+alias pip-freeze="pip freeze > requirements.txt" # Export Python dependencies
 
 # ----------------------------------------------------------------------------
 # Infrastructure as Code
 # ----------------------------------------------------------------------------
-alias tf="terraform"  # Terraform CLI shortcut
+alias tf="terraform" # Terraform CLI shortcut
 
 # ----------------------------------------------------------------------------
 # Docker & Containers
 # ----------------------------------------------------------------------------
-alias dock="docker"              # Docker shortcut
-alias dcompose="docker-compose"  # Docker Compose shortcut
-alias lzdoc="lazydocker"         # Terminal UI for Docker
+alias dock="docker" # Docker shortcut
+alias dcompose="docker-compose" # Docker Compose shortcut
+alias lzdoc="lazydocker" # Terminal UI for Docker
 
 # ----------------------------------------------------------------------------
 # Cloud Providers (Google Cloud)
 # ----------------------------------------------------------------------------
-alias g="gcloud"   # Google Cloud CLI shortcut
-alias gs="gsutil"  # Google Cloud Storage utility
+alias g="gcloud" # Google Cloud CLI shortcut
+alias gs="gsutil" # Google Cloud Storage utility
 
 # ----------------------------------------------------------------------------
 # File Operations & Navigation
 # ----------------------------------------------------------------------------
-alias fcat="fzf --preview -m 'bat --color=always {}'"  # Fuzzy find with preview using bat
+alias fcat="fzf --preview -m 'bat --color=always {}'" # Fuzzy find with preview using bat
 
 # ----------------------------------------------------------------------------
 # Configuration Management
 # ----------------------------------------------------------------------------
-alias dotfile="cd ~/.dotfiles && nvim"                  # Quick access to dotfiles repo
-alias dotconfig="cd ~/.config && nvim"                  # Quick access to config directory
-alias ssh-config="nvim ~/.ssh/config"                   # Edit SSH configuration
-alias brew-export="brew bundle dump --describe"         # Export Brewfile with descriptions
+alias dotfile="cd ~/.dotfiles && nvim" # Quick access to dotfiles repo
+alias dotconfig="cd ~/.config && nvim" # Quick access to config directory
+alias ssh-config="nvim ~/.ssh/config" # Edit SSH configuration
+alias brew-export="brew bundle dump --describe" # Export Brewfile with descriptions
+
+# ----------------------------------------------------------------------------
+# AI Development Tools
+# ----------------------------------------------------------------------------
+alias c="claude" # Anthropic Claude CLI shortcut
+alias o="opencode" # OpenCode editor shortcut
 
 # ----------------------------------------------------------------------------
 # Additional Tools
