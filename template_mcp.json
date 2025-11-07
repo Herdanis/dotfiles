@@ -25,6 +25,14 @@
         "npx -y gcp-mcp"
       ]
     },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server"
+      ]
+    },
     "awslabs.core-mcp-server": {
       "command": "uvx",
       "args": [
