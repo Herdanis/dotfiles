@@ -34,24 +34,24 @@ require("config.lazy")
 -- Available variants: latte, frappe, macchiato, mocha
 -- Uncomment to enable:
 -- require("catppuccin")
--- vim.cmd.colorscheme("catppuccin-mocha")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
 
 -- ----------------------------------------------------------------------------
 -- Sonokai Theme (Currently Disabled)
 -- ----------------------------------------------------------------------------
 -- High contrast theme with vivid colors
 -- Uncomment to enable:
--- vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme sonokai")
 
 -- ----------------------------------------------------------------------------
 -- OneDark Theme (Currently Active)
 -- ----------------------------------------------------------------------------
 -- OneDark theme inspired by Atom's One Dark color scheme
 -- Available styles: dark, darker, cool, deep, warm, warmer
-require("onedark").setup({
-  style = "warmer",  -- Using warmer variant for softer colors
-})
-require("onedark").load()
+-- require("onedark").setup({
+--   style = "darker", -- Using warmer variant for softer colors
+-- })
+-- require("onedark").load()
 
 -- ============================================================================
 -- LSP (Language Server Protocol) Configuration
@@ -63,7 +63,7 @@ require("onedark").load()
 -- Mason: Package manager for LSP servers, DAP servers, linters, and formatters
 -- Provides easy installation and management of development tools
 require("mason").setup()
-require("mason-lspconfig").setup()  -- Bridge between mason.nvim and lspconfig
+require("mason-lspconfig").setup() -- Bridge between mason.nvim and lspconfig
 
 -- ----------------------------------------------------------------------------
 -- Go Language Support (Currently Disabled)
