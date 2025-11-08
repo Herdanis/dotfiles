@@ -41,17 +41,19 @@ require("config.lazy")
 -- ----------------------------------------------------------------------------
 -- High contrast theme with vivid colors
 -- Uncomment to enable:
-vim.cmd("colorscheme sonokai")
+-- vim.cmd("colorscheme sonokai")
 
 -- ----------------------------------------------------------------------------
 -- OneDark Theme (Currently Active)
 -- ----------------------------------------------------------------------------
 -- OneDark theme inspired by Atom's One Dark color scheme
 -- Available styles: dark, darker, cool, deep, warm, warmer
--- require("onedark").setup({
---   style = "darker", -- Using warmer variant for softer colors
--- })
--- require("onedark").load()
+require("onedark").setup({
+  style = "darker", -- Using warmer variant for softer colors
+})
+require("onedark").load()
+
+-- vim.cmd("colorscheme github_dark_dimmed")
 
 -- ============================================================================
 -- LSP (Language Server Protocol) Configuration
