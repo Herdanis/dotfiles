@@ -2,3 +2,4 @@ archive
 .DS_Store
 .config/starship/starship_.toml
 .config/fish/credentials.fish
+.config/opencode/agent
