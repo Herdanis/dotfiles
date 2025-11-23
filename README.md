@@ -49,8 +49,8 @@ cp .config/fish/credentials.fish.template .config/fish/credentials.fish
 ### AI & Development Tools
 - **Claude Code**: Anthropic's CLI (`c` alias)
 - **OpenCode**: AI-powered code editor with LM Studio integration
-- **MCP Servers**: 5 configured servers (Jam, Tmux, Browser, GCP, AWS)
-- **Neovim**: LazyVim with 33+ plugins and Avante.nvim AI assistant
+- **MCP Servers**: 6 configured servers (Jam, Tmux, Browser, GCP, AWS, Serena)
+- **Neovim**: LazyVim with AI assistance and comprehensive plugin ecosystem
 
 ### Neovim Configuration
 - **Framework**: LazyVim
@@ -86,7 +86,8 @@ The repository includes MCP server configurations for AI-enhanced development:
 - **Tmux**: Terminal session management with Fish shell
 - **BrowserMCP**: Browser control and automation
 - **GCP**: Google Cloud Platform operations
-- **AWS**: AWS infrastructure management
+- **AWS**: AWS infrastructure management (awslabs.core-mcp-server)
+- **Serena**: Additional AI capabilities via Oraios Serena
 
 **Usage**:
 ```bash
@@ -104,6 +105,7 @@ OpenCode is configured with LM Studio for local LLM inference:
 - Local LM Studio integration (http://127.0.0.1:1234/v1)
 - Environment protection middleware
 - OpenAI-compatible API
+- MCP Integration: Tmux and Serena servers
 
 **Configuration**: `.config/opencode/opencode.json`
 
@@ -163,7 +165,7 @@ brew-export          # Export Brewfile with descriptions
 
 ### Custom Fish Functions
 
-**16 Custom Functions** (see `.config/fish/README.md` for details):
+**20+ Custom Functions**:
 
 **Docker Utilities**:
 - `buildx` - Build multi-platform Docker images
@@ -183,7 +185,7 @@ brew-export          # Export Brewfile with descriptions
 
 ### Tmux Configuration
 
-**Key Features** (`.config/tmux/tmux.conf:1-211`):
+**Key Features**:
 - **Prefix**: Alt/Option + Space (macOS optimized)
 - **Theme**: Catppuccin Mocha
 - **Navigation**: Vim-style (hjkl) with vim-tmux-navigator
@@ -267,8 +269,8 @@ docker run -it --rm -v $(pwd):/workspace devenv
 
 ## 🎨 Neovim Themes
 
-Available colorschemes (switch with `<leader>uC`):
-- OneDark (Warmer) - Active
+Available colorschemes (switch with `<C-n>` for FzfLua picker):
+- OneDark (Darker) - Active
 - Catppuccin Mocha
 - Kanagawa
 - Dracula

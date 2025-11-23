@@ -48,6 +48,22 @@ map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window 
 map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- ============================================================================
+-- Terminal Management
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- Terminal Buffer Creation
+-- ----------------------------------------------------------------------------
+-- Open terminal in different layouts
+map("n", "<leader>tt", "<cmd>terminal<cr>", { desc = "Terminal (current window)" })
+map("n", "<leader>th", "<cmd>split | terminal<cr>", { desc = "Terminal (horizontal split)" })
+map("n", "<leader>tv", "<cmd>vsplit | terminal<cr>", { desc = "Terminal (vertical split)" })
+map("n", "<leader>tT", "<cmd>tabnew | terminal<cr>", { desc = "Terminal (new tab)" })
+
+-- Quick escape from terminal mode to normal mode
+map("t", "<A-q>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- ============================================================================
 -- Color Scheme Selection
 -- ============================================================================
 
