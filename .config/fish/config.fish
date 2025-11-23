@@ -161,6 +161,11 @@ alias ssh-config="nvim ~/.ssh/config" # Edit SSH configuration
 alias brew-export="brew bundle dump --describe" # Export Brewfile with descriptions
 
 # ----------------------------------------------------------------------------
+# File Management
+# ----------------------------------------------------------------------------
+alias yz="yazi" # Terminal file manager shortcut
+
+# ----------------------------------------------------------------------------
 # AI Development Tools
 # ----------------------------------------------------------------------------
 alias c="claude" # Anthropic Claude CLI shortcut

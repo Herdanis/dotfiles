@@ -61,6 +61,13 @@ buildx-push registry.io/app:latest
 mysql -h localhost -u user -p database
 ```
 
+### File Management
+
+**`yz`** - Launch Yazi terminal file manager
+```fish
+yz  # Opens yazi for visual file navigation
+```
+
 ### Security & Encoding
 
 **`gen-passwd`** - Generate secure passwords
