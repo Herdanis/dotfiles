@@ -13,8 +13,10 @@ SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR --export STARSHIP_CACHE:/Users/herdanis/\x2estarship/cache
 SETUVAR --export STARSHIP_CONFIG:/Users/herdanis/\x2econfig/starship/starship\x2etoml
 SETUVAR __fish_initialized:3800
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_jgantunes_2F_fish_2D_gvm_files:\x7e/\x2econfig/fish/functions/gvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/gvm\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish\x1ejgantunes/fish\x2dgvm\x1eedc/bass
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:707A8C
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -55,4 +57,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dFFCC66
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR --export fish_user_paths:/Users/herdanis/go/bin\x1e/Users/herdanis/\x2eopencode/bin\x1e/Users/herdanis/\x2ecargo/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS
+SETUVAR --export fish_user_paths:/Users/herdanis/\x2egvm/pkgsets/go1\x2e24\x2e2/global/bin\x1e/Users/herdanis/go/bin\x1e/Users/herdanis/\x2eopencode/bin\x1e/Users/herdanis/\x2ecargo/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS

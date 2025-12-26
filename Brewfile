@@ -1,46 +1,17 @@
-# ============================================================================
-# Homebrew Bundle File (Brewfile)
-# ============================================================================
-# Defines all packages, casks, and taps for Homebrew package manager
-# This file enables reproducible development environment setup
-#
-# Usage:
-#   brew bundle install              # Install all packages
-#   brew bundle dump --describe      # Regenerate this file with descriptions
-#   brew bundle check                # Check if packages are installed
-#   brew bundle cleanup              # Uninstall packages not in this file
-#
-# Package Categories:
-#   - CLI Tools: Development utilities and command-line tools
-#   - Languages: Go, Python, Node.js, Rust
-#   - Cloud: AWS, Azure, GCP, DigitalOcean
-#   - Kubernetes: kubectl, helm, k9s, istio, argocd
-#   - Containers: Docker, lazydocker
-#   - Terminal: Fish, Tmux, Neovim, Starship
-#   - GUI Apps: Ghostty, Postman, Discord, browsers
-#   - Fonts: Nerd Fonts for terminal icons
-#
-# Documentation: https://github.com/Homebrew/homebrew-bundle
-# ============================================================================
-
-# ----------------------------------------------------------------------------
-# Third-Party Taps (Additional Package Repositories)
-# ----------------------------------------------------------------------------
-tap "bufbuild/buf"                # Protocol Buffers tools
-tap "derailed/popeye"             # Kubernetes cluster sanitizer
-tap "fleet/local"                 # Fleet tools
-tap "hashicorp/tap"               # Terraform, Vault, Consul
-tap "homebrew/bundle"             # Brewfile support
-tap "homebrew/cask-fonts"         # Fonts (Nerd Fonts)
-tap "jandedobbeleer/oh-my-posh"   # Oh My Posh prompt
-tap "pulumi/tap"                  # Pulumi Infrastructure as Code
-tap "teamookla/speedtest"         # Speedtest CLI
-tap "tnk-studio/tools"            # Lazykube
-tap "wickenico/wailbrew"          # Wailbrew GUI for Homebrew
-
-# ============================================================================
-# CLI Tools & Utilities
-# ============================================================================
+tap "bufbuild/buf"
+tap "derailed/popeye"
+tap "fleet/local"
+tap "hashicorp/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "jandedobbeleer/oh-my-posh"
+tap "productdevbook/tap"
+tap "pulumi/tap"
+tap "teamookla/speedtest"
+tap "tnk-studio/tools"
+tap "tonisives/tap"
+tap "valkyrie00/bbrew"
+tap "wickenico/wailbrew"
 # Run your GitHub Actions locally
 brew "act"
 # Simple, modern, secure file encryption
@@ -49,12 +20,16 @@ brew "age"
 brew "tree"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Resource monitor. C++ version and continuation of bashtop and bpytop
-brew "btop"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Core application library for C
 brew "glib"
 # Tool for exploring each layer in a docker image
@@ -73,6 +48,8 @@ brew "ffmpeg"
 brew "fish"
 # Plugin manager for the Fish shell
 brew "fisher"
+# Generic library support script
+brew "libtool"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # WebDriver <-> Marionette proxy
@@ -97,11 +74,13 @@ brew "grpcui"
 brew "helm"
 # Deploy Kubernetes Helm Charts
 brew "helmfile"
-# HTTP load generator, ApacheBench (ab) replacement
-brew "hey"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Istio configuration command-line utility
 brew "istioctl"
-# Platform built on V8 to build network applications
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Interactive environments for writing and running code
 brew "jupyterlab"
@@ -123,6 +102,8 @@ brew "lazydocker"
 brew "lazygit"
 # Command-line interface to LiveKit
 brew "livekit-cli"
+# Scalable distributed version control system
+brew "mercurial"
 # Run a Kubernetes cluster locally
 brew "minikube"
 # Automated testing for Ansible roles
@@ -137,6 +118,10 @@ brew "nvm"
 brew "oha"
 # Generate clients, server & docs from an OpenAPI spec (v2, v3)
 brew "openapi-generator"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
 # Data loading tool for PostgreSQL
@@ -147,6 +132,8 @@ brew "phoneinfoga"
 brew "pipx"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Tool for managing OCI containers and pods
+brew "podman"
 # Python package management tool
 brew "poetry"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -165,10 +152,12 @@ brew "pyenv"
 brew "python@3.12"
 # File browser
 brew "ranger"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
+# SVG rendering tool and library
+brew "resvg"
 # Safe, concurrent, practical language
 brew "rust"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
 # Editor of encrypted files
 brew "sops"
 # Cross-shell prompt for astronauts
@@ -181,10 +170,14 @@ brew "superfile"
 brew "telnet"
 # Terminal multiplexer
 brew "tmux"
+# Shell completion for Tmuxinator
+brew "tmuxinator-completion"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
 # Distributed SQL query engine for big data
 brew "trino"
+# Cozy typing speed tester in terminal
+brew "typioca"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # HTTP load testing tool and library
@@ -195,12 +188,14 @@ brew "watch"
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
-# CLI client for the Woodpecker Continuous Integration server
-brew "woodpecker-cli"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Zsh port of Fish shell's history search
@@ -213,13 +208,12 @@ brew "bufbuild/buf/buf"
 brew "derailed/popeye/popeye"
 # Terraform
 brew "hashicorp/tap/terraform"
-# Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 # Pulumi - Modern Infrastructure as Code. Any cloud, any language
 brew "pulumi/tap/pulumi"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
-brew "tnk-studio/tools/lazykube"
+# A simple TUI tool to make your homebrew bold.
+brew "valkyrie00/bbrew/bbrew"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Distribution of the Python and R programming languages for scientific computing
@@ -248,19 +242,19 @@ cask "mongodb-compass"
 cask "neo4j-desktop"
 # Web browser
 cask "opera"
+# System-wide Vim mode for macOS
+cask "ovim"
 # Collaboration platform for API development
 cask "postman"
 # Music streaming service
 cask "spotify"
 # Manage Homebrew packages with a UI
 cask "wailbrew"
-# Native desktop client for WhatsApp
-cask "whatsapp"
-# Compatibility layer to run Windows applications
-cask "wine-stable"
+vscode "anthropic.claude-code"
 vscode "donjayamanne.githistory"
 vscode "hediet.vscode-drawio"
 vscode "mhutchie.git-graph"
 vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.remote-explorer"
+cargo "grip-grab"

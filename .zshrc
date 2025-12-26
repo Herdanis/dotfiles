@@ -199,7 +199,7 @@ buildx-push(){
 }
 
 h-dry(){
-  helm install dry-run-helm-chart "$1" --debug --dry-run 
+  helm install dry-run-helm-chart "$1" --debug --dry-run
 }
 
 #source ~/powerlevel10k/powerlevel10k.zsh-theme
@@ -235,3 +235,5 @@ fpath=(/Users/herdanis/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+[[ -s "/Users/herdanis/.gvm/scripts/gvm" ]] && source "/Users/herdanis/.gvm/scripts/gvm"
