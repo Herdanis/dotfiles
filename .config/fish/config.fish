@@ -118,6 +118,7 @@ alias nremote="nvim --remote-ui --server" # Start Neovim in server mode
 alias t="tmux" # Quick tmux launch
 alias ta="tmux a -t" # Attach to tmux session
 alias tn="tmux new -s" # Create new named tmux session
+alias t-ai="tmux a -t tmux-ai" # Tmux open tmux-ai session
 alias mux="tmuxinator" # Tmux session manager
 
 # ----------------------------------------------------------------------------
