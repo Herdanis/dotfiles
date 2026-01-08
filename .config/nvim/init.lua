@@ -48,12 +48,31 @@ require("config.lazy")
 -- ----------------------------------------------------------------------------
 -- OneDark theme inspired by Atom's One Dark color scheme
 -- Available styles: dark, darker, cool, deep, warm, warmer
-require("onedark").setup({
-  style = "darker", -- Using warmer variant for softer colors
-})
-require("onedark").load()
+-- require("onedark").setup({
+--   style = "darker", -- Using warmer variant for softer colors
+-- })
+-- require("onedark").load()
+--
+-- vim.cmd("colorscheme onedark_dark")
 
--- vim.cmd("colorscheme github_dark_dimmed")
+-- vim.cmd("colorscheme github_dark_tritanopia")
+-- -- For using default config leave this empty.
+-- require("citruszest").setup({
+--   option = {
+--     transparent = false, -- Enable/Disable transparency
+--     bold = false,
+--     italic = true,
+--   },
+--   -- Override default highlight style in this table
+--   -- E.g If you want to override `Constant` highlight style
+--   style = {
+--     -- This will change Constant foreground color and make it bold.
+--     Constant = { fg = "#FFFFFF", bold = true },
+--   },
+-- })
+-- vim.cmd("colorscheme citruszest")
+-- vim.cmd("colorscheme tokyodark")
+vim.cmd("colorscheme cyberdream")
 
 -- ============================================================================
 -- LSP (Language Server Protocol) Configuration
