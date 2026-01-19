@@ -1,6 +1,6 @@
 # Tmux ai session - opens/creates session "tmux-ai" with numbered windows
 function mux-ai
-    set -l session_name "tmux-ai"
+    set -l session_name tmux-ai
     set -l workspace (pwd)
     set -l base_name (basename $workspace)
 
@@ -14,22 +14,12 @@ function mux-ai
     end
     set -l window_name "$base_name-"(printf "%02d" $counter)
 
-    # Create or attach to session
+    # Create or attach to session (in background)
     if not tmux has-session -t $session_name 2>/dev/null
-        # Create new session
-        if set -q TMUX
-            TMUX= tmux new-session -d -s $session_name -c $workspace -n $window_name
-            tmux switch-client -t $session_name
-        else
-            tmux new-session -s $session_name -c $workspace -n $window_name
-        end
-    else if set -q TMUX
-        # Inside tmux - create window and switch if needed
-        set -l current_session (tmux display-message -p '#S')
-        tmux new-window -t $session_name -c $workspace -n $window_name
-        test "$current_session" != "$session_name"; and tmux switch-client -t $session_name
+        # Create new session in background
+        TMUX= tmux new-session -d -s $session_name -c $workspace -n $window_name
     else
-        # Outside tmux - attach and create window
-        tmux attach-session -t $session_name \; new-window -c $workspace -n $window_name
+        # Session exists - create window in background
+        tmux new-window -d -t $session_name -c $workspace -n $window_name
     end
 end
