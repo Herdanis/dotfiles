@@ -17,4 +17,15 @@
 os:
   # Use Neovim as the default editor for commit messages and file editing
   # Options: 'nvim', 'vim', 'emacs', 'nano', 'vscode', etc.
-  editPreset: 'nvim'
+  editPreset: "nvim"
+customCommands:
+  - key: <c-a>
+    description: Pick AI commit
+    command: aicommit2
+    context: files
+    output: terminal
+  - key: <c-n>
+    description: Pick AI commit (no verify)
+    command: aicommit2 --no-verify
+    context: files
+    output: terminal

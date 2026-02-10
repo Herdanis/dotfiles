@@ -38,6 +38,8 @@ set -Ux STARSHIP_CONFIG "$HOME/.config/starship/starship.toml" # Custom config l
 set -Ux STARSHIP_CACHE "$HOME/.starship/cache" # Cache directory
 starship init fish | source
 
+# set -x CODE_ASSIST_ENDPOINT "http://127.0.0.1:8317"
+
 # ----------------------------------------------------------------------------
 # FZF (Fuzzy Finder) Setup
 # ----------------------------------------------------------------------------
