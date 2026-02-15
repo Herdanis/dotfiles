@@ -21,22 +21,24 @@
   "mcp": {
     "MCP_DOCKER": {
       "type": "local",
-      "command": [
-        "docker",
-        "mcp",
-        "gateway",
-        "run"
-      ],
+      "command": ["docker", "mcp", "gateway", "run"],
       "enabled": true
+    },
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--open-web-dashboard",
+        "False"
+      ]
     },
     "tmux": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "tmux-mcp",
-        "--shell-type=fish"
-      ]
+      "command": ["npx", "-y", "tmux-mcp", "--shell-type=fish"]
     }
   }
 }

@@ -6,38 +6,28 @@
     },
     "tmux": {
       "command": "npx",
-      "args": [
-        "-y",
-        "tmux-mcp",
-        "--shell-type=fish"
-      ]
+      "args": ["-y", "tmux-mcp", "--shell-type=fish"]
     },
     "browsermcp": {
       "command": "npx",
-      "args": [
-        "@browsermcp/mcp@latest"
-      ]
+      "args": ["@browsermcp/mcp@latest"]
     },
     "gcp": {
       "command": "sh",
-      "args": [
-        "-c",
-        "npx -y gcp-mcp"
-      ]
+      "args": ["-c", "npx -y gcp-mcp"]
     },
     "serena": {
       "command": "uvx",
       "args": [
         "--from",
         "git+https://github.com/oraios/serena",
-        "serena-mcp-server"
+        "serena-mcp-server",
+        "--open-web-dashboard False"
       ]
     },
     "awslabs.core-mcp-server": {
       "command": "uvx",
-      "args": [
-        "awslabs.core-mcp-server@latest"
-      ],
+      "args": ["awslabs.core-mcp-server@latest"],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       }

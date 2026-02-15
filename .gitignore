@@ -4,3 +4,4 @@ archive
 .config/fish/credentials.fish
 .config/opencode/agent
 opencode.json
+/.serena
