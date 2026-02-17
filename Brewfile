@@ -7,6 +7,7 @@ tap "homebrew/cask-fonts"
 tap "jandedobbeleer/oh-my-posh"
 tap "productdevbook/tap"
 tap "pulumi/tap"
+tap "skyhook-io/tap"
 tap "teamookla/speedtest"
 tap "tnk-studio/tools"
 tap "tonisives/tap"
@@ -16,6 +17,10 @@ tap "wickenico/wailbrew"
 brew "act"
 # Simple, modern, secure file encryption
 brew "age"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Reactive CLI that generates commit messages for Git and Jujutsu with AI
+brew "aicommit2"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # GitOps Continuous Delivery for Kubernetes
@@ -42,7 +47,7 @@ brew "espeak"
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
@@ -74,14 +79,14 @@ brew "grpcui"
 brew "helm"
 # Deploy Kubernetes Helm Charts
 brew "helmfile"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Istio configuration command-line utility
 brew "istioctl"
+# Git-compatible distributed version control system
+brew "jj"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Interactive environments for writing and running code
 brew "jupyterlab"
 # Modern load testing tool, using Go and JavaScript
@@ -102,8 +107,8 @@ brew "lazydocker"
 brew "lazygit"
 # Command-line interface to LiveKit
 brew "livekit-cli"
-# Scalable distributed version control system
-brew "mercurial"
+# Fast, flexible, config-based cli for linting Markdown/CommonMark files
+brew "markdownlint-cli2"
 # Run a Kubernetes cluster locally
 brew "minikube"
 # Automated testing for Ansible roles
@@ -188,6 +193,8 @@ brew "watch"
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
+# Why is this running?
+brew "witr"
 # JavaScript package manager
 brew "yarn"
 # Blazing fast terminal file manager written in Rust, based on async I/O
@@ -210,14 +217,18 @@ brew "derailed/popeye/popeye"
 brew "hashicorp/tap/terraform"
 # Pulumi - Modern Infrastructure as Code. Any cloud, any language
 brew "pulumi/tap/pulumi"
+# Modern Kubernetes visibility — topology, traffic, and Helm management
+brew "skyhook-io/tap/radar", link: false
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
-# A simple TUI tool to make your homebrew bold.
+# Modern TUI for managing Homebrew packages and casks on macOS and Linux
 brew "valkyrie00/bbrew/bbrew"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
 # UI to create reproducible developer environments based on a devcontainer.json
 cask "devpod"
 # Voice and text chat software
@@ -243,17 +254,22 @@ cask "neo4j-desktop"
 # Web browser
 cask "opera"
 # System-wide Vim mode for macOS
-cask "ovim"
+cask "tonisives/tap/ovim"
+# Menu bar app to find and kill processes running on open ports
+cask "productdevbook/tap/portkiller"
 # Collaboration platform for API development
 cask "postman"
+# Check important metrics from the menubar
+cask "radar"
 # Music streaming service
 cask "spotify"
 # Manage Homebrew packages with a UI
-cask "wailbrew"
+cask "wickenico/wailbrew/wailbrew"
 vscode "anthropic.claude-code"
 vscode "donjayamanne.githistory"
 vscode "hediet.vscode-drawio"
 vscode "mhutchie.git-graph"
+vscode "ms-ossdata.vscode-pgsql"
 vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.remote-explorer"
