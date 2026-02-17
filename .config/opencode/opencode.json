@@ -24,6 +24,10 @@
       "command": ["docker", "mcp", "gateway", "run"],
       "enabled": true
     },
+    "browsermcp": {
+      "type": "local",
+      "command": ["npx", "@browsermcp/mcp@latest"]
+    },
     "serena": {
       "type": "local",
       "command": [
