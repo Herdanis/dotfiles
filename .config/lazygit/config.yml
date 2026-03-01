@@ -21,11 +21,11 @@ os:
 customCommands:
   - key: <c-a>
     description: Pick AI commit
-    command: aicommit2
+    command: oco
     context: files
     output: terminal
   - key: <c-n>
     description: Pick AI commit (no verify)
-    command: aicommit2 --no-verify
+    command: oco --no-verify
     context: files
     output: terminal
