@@ -47,12 +47,14 @@ cp .config/fish/credentials.fish.template .config/fish/credentials.fish
 ## 🛠️ Key Tools & Technologies
 
 ### AI & Development Tools
+
 - **Claude Code**: Anthropic's CLI (`c` alias)
 - **OpenCode**: AI-powered code editor with LM Studio integration
 - **MCP Servers**: 6 configured servers (Jam, Tmux, Browser, GCP, AWS, Serena)
 - **Neovim**: LazyVim with AI assistance and comprehensive plugin ecosystem
 
 ### Neovim Configuration
+
 - **Framework**: LazyVim
 - **AI Assistance**: Avante.nvim (OpenAI, Claude, Moonshot)
 - **MCP Integration**: Model Context Protocol support
@@ -63,12 +65,14 @@ cp .config/fish/credentials.fish.template .config/fish/credentials.fish
 - **Themes**: OneDark, Catppuccin, Kanagawa, Dracula, Sonokai, Cyberdream
 
 ### Shell & Terminal
+
 - **Shell**: Fish with 22+ custom functions
 - **Prompt**: Starship (configured for cloud/dev workflows)
 - **Terminal**: Ghostty with Dark+ theme
 - **Multiplexer**: Tmux with Catppuccin theme
 
 ### Cloud & Infrastructure
+
 - **Kubernetes**: kubectl, k9s, helm, helmfile, kubeshark
 - **Cloud**: gcloud, azure-cli, doctl
 - **IaC**: Terraform, Pulumi
@@ -82,6 +86,7 @@ cp .config/fish/credentials.fish.template .config/fish/credentials.fish
 The repository includes MCP server configurations for AI-enhanced development:
 
 **Configured Servers** (see `template_mcp.json`):
+
 - **Jam**: Browser automation via HTTP
 - **Tmux**: Terminal session management with Fish shell
 - **BrowserMCP**: Browser control and automation
@@ -90,6 +95,7 @@ The repository includes MCP server configurations for AI-enhanced development:
 - **Serena**: Additional AI capabilities via Oraios Serena
 
 **Usage**:
+
 ```bash
 # Copy template for Claude Code
 cp template_mcp.json ~/.config/claude-code/mcp.json
@@ -102,6 +108,7 @@ cp template_mcp.json ~/.config/claude-code/mcp.json
 OpenCode is configured with LM Studio for local LLM inference:
 
 **Features**:
+
 - Local LM Studio integration (http://127.0.0.1:1234/v1)
 - Environment protection middleware
 - OpenAI-compatible API
@@ -168,15 +175,18 @@ brew-export          # Export Brewfile with descriptions
 **20+ Custom Functions**:
 
 **Docker Utilities**:
+
 - `buildx` - Build multi-platform Docker images
 - `buildx-push` - Build and push to registry
 
 **Security & Encoding**:
+
 - `gen-passwd` - Generate secure passwords
 - `sha256` - Calculate SHA-256 hash
 - `de64` - Decode base64 strings
 
 **General Utilities**:
+
 - `tarx` - Extract tar.gz archives
 - `envsource` - Load .env file variables
 - `h-dry` - Helm dry-run helper
@@ -186,6 +196,7 @@ brew-export          # Export Brewfile with descriptions
 ### Tmux Configuration
 
 **Key Features**:
+
 - **Prefix**: Alt/Option + Space (macOS optimized)
 - **Theme**: Catppuccin Mocha
 - **Navigation**: Vim-style (hjkl) with vim-tmux-navigator
@@ -201,11 +212,13 @@ brew-export          # Export Brewfile with descriptions
 ## 🔐 Credentials Setup
 
 1. Copy the template:
+
    ```bash
    cp .config/fish/credentials.fish.template .config/fish/credentials.fish
    ```
 
 2. Edit and add your secrets:
+
    ```fish
    # API Keys
    set -gx OPENAI_API_KEY "your_openai_key"
@@ -230,11 +243,13 @@ Pre-commit hooks are configured to prevent credential leaks:
 - **Code quality**: Trailing whitespace, EOF newlines, mixed line endings
 
 **Setup pre-commit** (one-time):
+
 ```bash
 pre-commit install
 ```
 
 The hooks will automatically run before each commit and **reject commits** if:
+
 - Credentials or API keys are detected
 - `credentials.fish` or `.env` files are staged (without `.template`)
 - Private keys are found
@@ -255,6 +270,7 @@ The Brewfile includes:
 ## 🐳 Docker Development Container
 
 The included `Dockerfile` provides a development container with:
+
 - Debian stable-slim base
 - Go 1.22.4
 - Neovim
@@ -262,6 +278,7 @@ The included `Dockerfile` provides a development container with:
 - Build tools
 
 Build and use:
+
 ```bash
 docker build -t devenv .
 docker run -it --rm -v $(pwd):/workspace devenv
@@ -270,6 +287,7 @@ docker run -it --rm -v $(pwd):/workspace devenv
 ## 🎨 Neovim Themes
 
 Available colorschemes (switch with `<C-n>` for FzfLua picker):
+
 - OneDark (Darker) - Active
 - Catppuccin Mocha
 - Kanagawa
