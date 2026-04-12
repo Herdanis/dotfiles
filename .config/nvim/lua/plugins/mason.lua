@@ -43,7 +43,7 @@ return {
       "marksman", -- Markdown files
       "pyright", -- Python (type-aware)
       "svelte", -- Svelte framework
-      "terraformls", -- Terraform/HCL
+      "terraform", -- Terraform/HCL
       "yamlls", -- YAML files
       "sqlls", -- SQL queries
       "sqls", -- SQL (alternative)
