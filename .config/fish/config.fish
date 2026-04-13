@@ -69,8 +69,8 @@ set -U fish_user_paths (go env GOPATH)/bin $fish_user_paths
 # ----------------------------------------------------------------------------
 # Default search command: find files up to 3 directories deep
 set -Ux FZF_DEFAULT_COMMAND "find . -maxdepth 3"
-# Ctrl+T command: same as default
-set -Ux FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+# Ctrl+T command: directories only
+set -Ux FZF_CTRL_T_COMMAND "find . -maxdepth 3 -type d"
 # Ctrl+T preview: show directory tree with colors, limited to 200 lines
 set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
 

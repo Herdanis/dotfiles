@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR --export FZF_CTRL_T_COMMAND:find\x20\x2e\x20\x2dmaxdepth\x203
+SETUVAR --export FZF_CTRL_T_COMMAND:find\x20\x2e\x20\x2dmaxdepth\x203\x20\x2dtype\x20d
 SETUVAR --export FZF_CTRL_T_OPTS:\x2d\x2dpreview\x20\x27tree\x20\x2dC\x20\x7b\x7d\x20\x7c\x20head\x20\x2d200\x27
 SETUVAR --export FZF_DEFAULT_COMMAND:find\x20\x2e\x20\x2dmaxdepth\x203
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
