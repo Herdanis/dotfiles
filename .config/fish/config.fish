@@ -73,6 +73,8 @@ set -Ux FZF_DEFAULT_COMMAND "find . -maxdepth 3"
 set -Ux FZF_CTRL_T_COMMAND "find . -maxdepth 3 -type d"
 # Ctrl+T preview: show directory tree with colors, limited to 200 lines
 set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
+# Ctrl+R: hide history timestamp, show command only (field 3 = command, field 2 = timestamp)
+set -Ux FZF_CTRL_R_OPTS --with-nth=3..
 
 # ----------------------------------------------------------------------------
 # Vim-style Cursor Configuration
