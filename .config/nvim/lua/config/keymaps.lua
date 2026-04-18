@@ -74,6 +74,20 @@ map("t", "<A-q>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<leader>dm", "<cmd>delmarks!<cr>", { desc = "Delete all marks" })
 
 -- ============================================================================
+-- Tmux AI Session
+-- ============================================================================
+
+-- Open/create a window in the tmux-ai session for current directory
+map("n", "<leader>ma", function()
+  local result = vim.fn.system("fish -c 'mux-ai'")
+  if vim.v.shell_error == 0 then
+    vim.notify("mux-ai: window created", vim.log.levels.INFO)
+  else
+    vim.notify("mux-ai failed: " .. result, vim.log.levels.ERROR)
+  end
+end, { desc = "Open mux-ai session window" })
+
+-- ============================================================================
 -- Color Scheme Selection
 -- ============================================================================
 

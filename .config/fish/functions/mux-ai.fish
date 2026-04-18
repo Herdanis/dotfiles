@@ -14,12 +14,15 @@ function mux-ai
     end
     set -l window_name "$base_name-"(printf "%02d" $counter)
 
-    # Create or attach to session (in background)
+    # Create or attach to session, capture window index for reliable targeting
+    set -l win_idx
     if not tmux has-session -t $session_name 2>/dev/null
-        # Create new session in background
         TMUX= tmux new-session -d -s $session_name -c $workspace -n $window_name
+        set win_idx 0
     else
-        # Session exists - create window in background
-        tmux new-window -d -t $session_name -c $workspace -n $window_name
+        set win_idx (tmux new-window -d -P -F "#{window_index}" -t $session_name -c $workspace -n $window_name)
     end
+
+    # Launch claude code in the new window (target by index, immune to auto-rename)
+    tmux send-keys -t "$session_name:$win_idx" "claude" Enter
 end
