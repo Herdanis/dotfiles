@@ -1,4 +1,4 @@
-function history-clean --description "Remove duplicate commands from fish history"
+function histclean --description "Remove duplicate commands from fish history"
     set -l history_file ~/.local/share/fish/fish_history
     set -l backup_file $history_file.bak.(date +%Y%m%d_%H%M%S)
 

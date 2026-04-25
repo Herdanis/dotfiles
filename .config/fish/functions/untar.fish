@@ -33,6 +33,6 @@
 #   - .tar:     tar -xvf file.tar
 # ============================================================================
 
-function tarx
+function untar
     tar -xvzf $argv
 end

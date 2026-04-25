@@ -111,9 +111,8 @@ alias k9s-logs="cd $HOME/Library/Application\ Support/k9s/screen-dumps/ && nvim"
 # ----------------------------------------------------------------------------
 # Editor Aliases
 # ----------------------------------------------------------------------------
-alias n="nvim" # Quick Neovim launch
-alias vim="nvim" # Replace vim with neovim
-alias gvim="nvim" # Replace gvim with neovim
+alias vim="n" # Replace vim with neovim (cd-aware)
+alias gvim="n" # Replace gvim with neovim (cd-aware)
 alias nremote="nvim --remote-ui --server" # Start Neovim in server mode
 
 # ----------------------------------------------------------------------------
@@ -122,7 +121,7 @@ alias nremote="nvim --remote-ui --server" # Start Neovim in server mode
 alias t="tmux" # Quick tmux launch
 alias ta="tmux a -t" # Attach to tmux session
 alias tn="tmux new -s" # Create new named tmux session
-alias t-ai="tmux a -t tmux-ai" # Tmux open tmux-ai session
+alias t-ai="tmux a -t tmux-ai" # Attach to tmux-ai session (use ai-session to open new window)
 alias mux="tmuxinator" # Tmux session manager
 
 # ----------------------------------------------------------------------------

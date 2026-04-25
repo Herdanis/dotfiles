@@ -1,5 +1,5 @@
-# Tmux ai session - opens/creates session "tmux-ai" with numbered windows
-function mux-ai
+# AI session - opens/creates tmux session "tmux-ai" with numbered windows
+function ai
     set -l session_name tmux-ai
     set -l workspace (pwd)
     set -l base_name (basename $workspace)

@@ -26,7 +26,7 @@
 #   # This is a comment and will be ignored
 # ============================================================================
 
-function envsource
+function envload
     # Process each line from the file
     for line in (cat $argv | grep -v '^#' |  grep -v '^\s*$' | sed -e 's/=/ /' -e "s/'//g" -e 's/"//g' )
         set export (string split ' ' $line)
