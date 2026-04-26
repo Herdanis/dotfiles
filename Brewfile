@@ -1,10 +1,17 @@
+tap "adembc/tap"
+tap "ariga/tap"
+tap "arimxyer/tap"
 tap "bufbuild/buf"
+tap "darksworm/tap"
 tap "derailed/popeye"
 tap "fleet/local"
+tap "gentleman-programming/tap"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "jandedobbeleer/oh-my-posh"
+tap "manaflow-ai/cmux"
+tap "multica-ai/tap"
 tap "productdevbook/tap"
 tap "pulumi/tap"
 tap "skyhook-io/tap"
@@ -23,6 +30,8 @@ brew "node"
 brew "aicommit2"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
 # Automatic configure script builder
@@ -37,6 +46,8 @@ brew "bat"
 brew "gettext"
 # Core application library for C
 brew "glib"
+# Command-line csv viewer
+brew "csvlens"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Command-line tool for DigitalOcean
@@ -65,6 +76,8 @@ brew "gh"
 brew "git"
 # Audit git repos for secrets
 brew "gitleaks"
+# Render markdown on the CLI
+brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -75,6 +88,10 @@ brew "golangci-lint"
 brew "gptscript"
 # Interactive web UI for gRPC, along the lines of postman
 brew "grpcui"
+# Like cURL, but for gRPC
+brew "grpcurl"
+# Command-Line Interface for Hasura GraphQL Engine
+brew "hasura-cli"
 # Kubernetes package manager
 brew "helm"
 # Deploy Kubernetes Helm Charts
@@ -105,8 +122,12 @@ brew "kubeshark"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Cross-platform TUI database management tool
+brew "lazysql"
 # Command-line interface to LiveKit
 brew "livekit-cli"
+# Find what models run on your hardware
+brew "llmfit"
 # Fast, flexible, config-based cli for linting Markdown/CommonMark files
 brew "markdownlint-cli2"
 # Run a Kubernetes cluster locally
@@ -143,6 +164,8 @@ brew "podman"
 brew "poetry"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Object-relational database system
+brew "postgresql@15"
 # Object-relational database system
 brew "postgresql@17"
 # Theme for zsh
@@ -209,12 +232,22 @@ brew "zsh-autosuggestions"
 brew "zsh-history-substring-search"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# A simple terminal UI for managing SSH connections.
+brew "adembc/tap/lazyssh"
+# A database toolkit
+brew "ariga/tap/atlas"
+# A fast TUI and CLI for browsing AI models, benchmarks, and coding agents
+brew "arimxyer/tap/models"
 # The best way of working with Protocol Buffers.
 brew "bufbuild/buf/buf"
 # A Kubernetes Cluster sanitizer and linter!
 brew "derailed/popeye/popeye"
+# Persistent memory for AI coding agents. Agent-agnostic, single binary, zero dependencies.
+brew "gentleman-programming/tap/engram"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Multica CLI — local agent runtime and management tool for the Multica platform
+brew "multica-ai/tap/multica"
 # Pulumi - Modern Infrastructure as Code. Any cloud, any language
 brew "pulumi/tap/pulumi"
 # Modern Kubernetes visibility — topology, traffic, and Helm management
@@ -227,8 +260,16 @@ brew "valkyrie00/bbrew/bbrew"
 cask "1password-cli"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# A GitOps CLI tool for managing ArgoCD applications
+cask "darksworm/tap/argonaut"
+# Display management tool
+cask "betterdisplay"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
 # UI to create reproducible developer environments based on a devcontainer.json
 cask "devpod"
 # Voice and text chat software
@@ -274,3 +315,7 @@ vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.remote-explorer"
 cargo "grip-grab"
+uv "gruyere"
+uv "posting"
+uv "sqlit-tui"
+krew "deprecations"
