@@ -183,3 +183,6 @@ set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin
 
 # opencode
 fish_add_path /Users/herdanis/.opencode/bin
+
+# agent-view
+fish_add_path /Users/herdanis/.agent-view/bin
