@@ -94,7 +94,37 @@ install_zoxide() {
 }
 
 # ============================================
-# Step 6 — Deploy Dotfiles
+# Step 6 — Lazygit
+# ============================================
+install_lazygit() {
+    should_skip lazygit && { log_skip lazygit; return; }
+    local version arch
+    version=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" \
+        | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+    arch=$(uname -m | sed 's/aarch64/arm64/')
+    curl -fsSL "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${version}_Linux_${arch}.tar.gz" \
+        | sudo tar -xz -C /usr/local/bin lazygit
+    log_ok lazygit
+}
+
+# ============================================
+# Step 7 — Yazi
+# ============================================
+install_yazi() {
+    should_skip yazi && { log_skip yazi; return; }
+    local arch
+    arch=$(uname -m)
+    curl -fsSL "https://github.com/sxyazi/yazi/releases/latest/download/yazi-${arch}-unknown-linux-gnu.zip" \
+        -o /tmp/yazi.zip
+    unzip -q /tmp/yazi.zip -d /tmp/yazi
+    sudo mv "/tmp/yazi/yazi-${arch}-unknown-linux-gnu/yazi" /usr/local/bin/yazi
+    sudo mv "/tmp/yazi/yazi-${arch}-unknown-linux-gnu/ya" /usr/local/bin/ya
+    rm -rf /tmp/yazi /tmp/yazi.zip
+    log_ok yazi
+}
+
+# ============================================
+# Step 8 — Deploy Dotfiles
 # ============================================
 deploy_dotfiles() {
     should_skip dotfiles && { log_skip dotfiles; return; }
@@ -104,7 +134,7 @@ deploy_dotfiles() {
 }
 
 # ============================================
-# Step 7 — Linux Compat Patches
+# Step 9 — Linux Compat Patches
 # ============================================
 patch_linux_compat() {
     should_skip patch && { log_skip patch; return; }
@@ -132,7 +162,7 @@ patch_linux_compat() {
 }
 
 # ============================================
-# Step 8 — Default Shell
+# Step 10 — Default Shell
 # ============================================
 set_default_shell() {
     should_skip shell && { log_skip shell; return; }
@@ -146,7 +176,7 @@ set_default_shell() {
 }
 
 # ============================================
-# Step 9 — TPM (Tmux Plugin Manager)
+# Step 11 — TPM (Tmux Plugin Manager)
 # ============================================
 setup_tpm() {
     should_skip tpm && { log_skip tpm; return; }
@@ -161,7 +191,7 @@ setup_tpm() {
 }
 
 # ============================================
-# Step 10 — Neovim Plugins
+# Step 12 — Neovim Plugins
 # ============================================
 setup_nvim_plugins() {
     should_skip nvim-plugins && { log_skip nvim-plugins; return; }
@@ -180,6 +210,8 @@ main() {
     install_starship
     install_fzf
     install_zoxide
+    install_lazygit
+    install_yazi
     deploy_dotfiles
     patch_linux_compat
     set_default_shell
