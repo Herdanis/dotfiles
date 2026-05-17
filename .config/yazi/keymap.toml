@@ -1,0 +1,7 @@
+[mgr]
+prepend_keymap = [
+    { on = "J", run = "plugin jump -- down", desc = "Jump N lines down" },
+    { on = "K", run = "plugin jump -- up",   desc = "Jump N lines up" },
+    { on = ["M", "s"], run = "plugin sshfs -- menu", desc = "SSHFS menu" },
+    { on = "z", run = "plugin zoxide", desc = "Jump to directory via zoxide" },
+]
