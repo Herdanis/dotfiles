@@ -34,3 +34,17 @@ should_skip() {
 
 log_skip() { echo "[SKIP] $1"; }
 log_ok()   { echo "[ OK ] $1"; }
+
+# ============================================
+# Step 1 — APT Packages
+# ============================================
+install_apt_packages() {
+    should_skip apt && { log_skip apt; return; }
+    sudo apt-get update -qq
+    sudo apt-get install -y --no-install-recommends \
+        curl wget git unzip tar xz-utils build-essential \
+        fish tmux stow ripgrep fd-find bat python3
+    sudo ln -sf /usr/bin/fdfind /usr/local/bin/fd 2>/dev/null || true
+    sudo ln -sf /usr/bin/batcat /usr/local/bin/bat 2>/dev/null || true
+    log_ok apt
+}
