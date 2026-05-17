@@ -130,3 +130,63 @@ patch_linux_compat() {
     echo "         Run: git -C ~/.dotfiles diff"
     log_ok patch
 }
+
+# ============================================
+# Step 8 — Default Shell
+# ============================================
+set_default_shell() {
+    should_skip shell && { log_skip shell; return; }
+    local fish_path
+    fish_path=$(which fish)
+    if ! grep -qx "$fish_path" /etc/shells; then
+        echo "$fish_path" | sudo tee -a /etc/shells
+    fi
+    chsh -s "$fish_path"
+    log_ok shell
+}
+
+# ============================================
+# Step 9 — TPM (Tmux Plugin Manager)
+# ============================================
+setup_tpm() {
+    should_skip tpm && { log_skip tpm; return; }
+    local tpm_dir="$HOME/.config/tmux/plugins/tpm"
+    if [[ ! -d "$tpm_dir" ]]; then
+        git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm_dir"
+    fi
+    tmux new-session -d -s tpm-install 2>/dev/null || true
+    "$tpm_dir/bin/install_plugins" || true
+    tmux kill-session -t tpm-install 2>/dev/null || true
+    log_ok tpm
+}
+
+# ============================================
+# Step 10 — Neovim Plugins
+# ============================================
+setup_nvim_plugins() {
+    should_skip nvim-plugins && { log_skip nvim-plugins; return; }
+    nvim --headless "+Lazy! sync" +qa 2>/dev/null || true
+    log_ok nvim-plugins
+}
+
+# ============================================
+# Main
+# ============================================
+main() {
+    echo "=== Dotfiles: Debian Install ==="
+    echo ""
+    install_apt_packages
+    install_neovim
+    install_starship
+    install_fzf
+    install_zoxide
+    deploy_dotfiles
+    patch_linux_compat
+    set_default_shell
+    setup_tpm
+    setup_nvim_plugins
+    echo ""
+    echo "Done. Start a new shell: exec fish"
+}
+
+main
