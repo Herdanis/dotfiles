@@ -92,3 +92,41 @@ install_zoxide() {
     sudo mv "$HOME/.local/bin/zoxide" /usr/local/bin/zoxide
     log_ok zoxide
 }
+
+# ============================================
+# Step 6 — Deploy Dotfiles
+# ============================================
+deploy_dotfiles() {
+    should_skip dotfiles && { log_skip dotfiles; return; }
+    cd "$HOME/.dotfiles"
+    stow .
+    log_ok dotfiles
+}
+
+# ============================================
+# Step 7 — Linux Compat Patches
+# ============================================
+patch_linux_compat() {
+    should_skip patch && { log_skip patch; return; }
+    local fish_cfg="$HOME/.config/fish/config.fish"
+    local tmux_cfg="$HOME/.config/tmux/tmux.conf"
+
+    # Patch 1: make brew sourcing a no-op when brew is absent
+    if grep -q '/opt/homebrew/bin/brew shellenv | source' "$fish_cfg"; then
+        sed -i 's@/opt/homebrew/bin/brew shellenv | source@command -q brew; and brew shellenv | source@' "$fish_cfg"
+    fi
+
+    # Patch 2: strip macOS-only PATH entries
+    sed -i '/lm-studio\/bin/d; /\.opencode\/bin/d; /\.agent-view\/bin/d' "$fish_cfg"
+
+    # Patch 3: fix tmux fish path (Homebrew → system)
+    if grep -q '/opt/homebrew/bin/fish' "$tmux_cfg"; then
+        sed -i 's@/opt/homebrew/bin/fish@/usr/bin/fish@g' "$tmux_cfg"
+    fi
+
+    echo ""
+    echo "WARNING: patch_linux_compat modified files inside ~/.dotfiles via stow symlinks."
+    echo "         Do NOT commit these changes — they would break the macOS config."
+    echo "         Run: git -C ~/.dotfiles diff"
+    log_ok patch
+}
