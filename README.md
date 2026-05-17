@@ -269,19 +269,47 @@ The Brewfile includes:
 
 ## 🐳 Docker Development Container
 
-The included `Dockerfile` provides a development container with:
+The included `Dockerfile` provides a full dotfiles-compatible environment:
 
 - Debian stable-slim base
-- Go 1.22.4
-- Neovim
+- Go, Node.js LTS
+- Neovim (latest stable, from GitHub releases)
+- Starship, FZF, Zoxide, Lazygit, Yazi
 - Docker CLI
-- Build tools
+- Fish + Tmux with all plugins pre-installed
 
-Build and use:
+Dotfiles are cloned from GitHub at build time — no local copy needed.
+
+### Build
 
 ```bash
+# Default: clones main branch of https://github.com/Herdanis/dotfiles
 docker build -t devenv .
+
+# Override branch
+docker build --build-arg DOTFILES_BRANCH=feat/something -t devenv .
+
+# Override repo (e.g. a fork)
+docker build --build-arg DOTFILES_REPO=https://github.com/fork/dotfiles.git -t devenv .
+```
+
+### Run
+
+```bash
+# Interactive shell with current directory mounted as /workspace
 docker run -it --rm -v $(pwd):/workspace devenv
+
+# Mount Docker socket to use Docker CLI inside the container
+docker run -it --rm \
+  -v $(pwd):/workspace \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  devenv
+
+# Pass environment variables (e.g. API keys)
+docker run -it --rm \
+  -v $(pwd):/workspace \
+  -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
+  devenv
 ```
 
 ## 🎨 Neovim Themes

@@ -4,8 +4,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
 ENV TZ=Asia/Jakarta
 
-# Base packages + shell tools
-# Note: software-properties-common not in Debian slim, lsb-release added separately
+# ============================================
+# Base System Packages
+# ============================================
+# software-properties-common absent in Debian slim; lsb-release added separately
 RUN apt-get update && apt-get install -y --no-install-recommends \
   curl \
   wget \
@@ -36,7 +38,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && ln -sf /usr/bin/batcat /usr/local/bin/bat \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Go (arch-aware: amd64 or arm64)
+# ============================================
+# Go
+# ============================================
 ENV GO_VERSION=1.24.3
 RUN ARCH=$(dpkg --print-architecture) \
   && curl -fsSL https://golang.org/dl/go${GO_VERSION}.linux-${ARCH}.tar.gz | tar -C /usr/local -xz
@@ -44,36 +48,57 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH=/go
 ENV PATH="$GOPATH/bin:$PATH"
 
-# Node.js LTS (needed for Neovim LSPs/formatters)
+# ============================================
+# Node.js LTS
+# ============================================
+# Required for Neovim LSPs and formatters
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y --no-install-recommends nodejs \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Neovim latest stable (arch-aware: uname returns aarch64 but nvim uses arm64)
+# ============================================
+# Neovim
+# ============================================
+# apt neovim is outdated; pull latest from GitHub releases
+# uname returns aarch64 but nvim assets use arm64
 RUN ARCH=$(uname -m | sed 's/aarch64/arm64/') \
   && curl -fsSL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${ARCH}.tar.gz" \
   | tar -C /usr/local -xz --strip-components=1
 
-# Starship prompt (install script detects arch)
+# ============================================
+# CLI Tools
+# ============================================
+# Starship: install script auto-detects arch
 RUN curl -fsSL https://starship.rs/install.sh | sh -s -- --yes
 
-# FZF (built from source, no arch issue)
+# FZF: built from source, no arch mapping needed
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf \
   && /opt/fzf/install --bin \
   && ln -sf /opt/fzf/bin/fzf /usr/local/bin/fzf
 
-# Zoxide (install script detects arch)
+# Zoxide: install script auto-detects arch
 RUN curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh \
   && mv /root/.local/bin/zoxide /usr/local/bin/zoxide
 
-# Lazygit (arch-aware: x86_64 or arm64)
+# Lazygit: arch-aware (x86_64 or arm64)
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" \
     | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/') \
   && ARCH=$(uname -m | sed 's/aarch64/arm64/') \
   && curl -fsSL "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH}.tar.gz" \
   | tar -xz -C /usr/local/bin lazygit
 
-# Docker CLI (arch-aware)
+# Yazi: arch uses uname -m directly (x86_64 or aarch64); ships yazi + ya binaries
+RUN ARCH=$(uname -m) \
+  && curl -fsSL "https://github.com/sxyazi/yazi/releases/latest/download/yazi-${ARCH}-unknown-linux-gnu.zip" \
+    -o /tmp/yazi.zip \
+  && unzip -q /tmp/yazi.zip -d /tmp/yazi \
+  && mv /tmp/yazi/yazi-${ARCH}-unknown-linux-gnu/yazi /usr/local/bin/yazi \
+  && mv /tmp/yazi/yazi-${ARCH}-unknown-linux-gnu/ya /usr/local/bin/ya \
+  && rm -rf /tmp/yazi /tmp/yazi.zip
+
+# ============================================
+# Docker CLI
+# ============================================
 RUN ARCH=$(dpkg --print-architecture) \
   && curl -fsSL https://download.docker.com/linux/debian/gpg \
     | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
@@ -82,25 +107,35 @@ RUN ARCH=$(dpkg --print-architecture) \
   && apt-get update && apt-get install -y --no-install-recommends docker-ce-cli \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Deploy dotfiles with Stow
-COPY . /root/.dotfiles/
-RUN mkdir -p /root/.config \
+# ============================================
+# Deploy Dotfiles
+# ============================================
+ARG DOTFILES_REPO=https://github.com/Herdanis/dotfiles.git
+ARG DOTFILES_BRANCH=main
+RUN git clone --depth 1 --branch ${DOTFILES_BRANCH} ${DOTFILES_REPO} /root/.dotfiles \
+  && mkdir -p /root/.config \
   && cd /root/.dotfiles \
   && stow .
 
-# Patch config.fish: make brew optional (no Homebrew on Linux)
+# ============================================
+# Linux Compatibility Patches
+# ============================================
+# Homebrew is macOS-only; make brew sourcing a no-op when absent
 RUN sed -i 's@/opt/homebrew/bin/brew shellenv | source@command -q brew; and brew shellenv | source@' \
   /root/.config/fish/config.fish
 
-# Remove macOS-only PATH entries (lm-studio, opencode, agent-view)
+# Strip macOS-only PATH entries (lm-studio, opencode, agent-view)
 RUN sed -i '/lm-studio\/bin/d; /\.opencode\/bin/d; /\.agent-view\/bin/d' \
   /root/.config/fish/config.fish
 
-# Patch tmux.conf: fix hardcoded Homebrew fish path
+# Homebrew ships fish at /opt/homebrew/bin/fish; Linux uses /usr/bin/fish
 RUN sed -i 's@/opt/homebrew/bin/fish@/usr/bin/fish@g' \
   /root/.config/tmux/tmux.conf
 
-# Install TPM (tmux plugin manager)
+# ============================================
+# Plugin Setup
+# ============================================
+# TPM (Tmux Plugin Manager)
 RUN git clone --depth 1 https://github.com/tmux-plugins/tpm \
   /root/.config/tmux/plugins/tpm
 
@@ -109,11 +144,13 @@ RUN tmux new-session -d -s install \
   && /root/.config/tmux/plugins/tpm/bin/install_plugins \
   && tmux kill-session -t install || true
 
-# Set Fish as default shell
-RUN chsh -s /usr/bin/fish
-
 # Pre-install Neovim plugins
 RUN nvim --headless "+Lazy! sync" +qa 2>/dev/null || true
+
+# ============================================
+# Final Configuration
+# ============================================
+RUN chsh -s /usr/bin/fish
 
 WORKDIR /workspace
 
