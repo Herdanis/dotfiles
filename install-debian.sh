@@ -48,3 +48,47 @@ install_apt_packages() {
     sudo ln -sf /usr/bin/batcat /usr/local/bin/bat 2>/dev/null || true
     log_ok apt
 }
+
+# ============================================
+# Step 2 — Neovim
+# ============================================
+install_neovim() {
+    should_skip neovim && { log_skip neovim; return; }
+    local arch
+    arch=$(uname -m | sed 's/aarch64/arm64/')
+    curl -fsSL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz" \
+        | sudo tar -C /usr/local -xz --strip-components=1
+    log_ok neovim
+}
+
+# ============================================
+# Step 3 — Starship
+# ============================================
+install_starship() {
+    should_skip starship && { log_skip starship; return; }
+    curl -fsSL https://starship.rs/install.sh | sudo sh -s -- --yes
+    log_ok starship
+}
+
+# ============================================
+# Step 4 — FZF
+# ============================================
+install_fzf() {
+    should_skip fzf && { log_skip fzf; return; }
+    if [[ ! -d /opt/fzf ]]; then
+        sudo git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf
+    fi
+    sudo /opt/fzf/install --bin
+    sudo ln -sf /opt/fzf/bin/fzf /usr/local/bin/fzf
+    log_ok fzf
+}
+
+# ============================================
+# Step 5 — Zoxide
+# ============================================
+install_zoxide() {
+    should_skip zoxide && { log_skip zoxide; return; }
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    sudo mv "$HOME/.local/bin/zoxide" /usr/local/bin/zoxide
+    log_ok zoxide
+}
