@@ -1,5 +1,6 @@
 archive
 .DS_Store
+.config/yazi/plugins/
 .config/starship/starship_.toml
 .config/fish/credentials.fish
 .config/opencode/agent

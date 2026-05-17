@@ -1,5 +1,6 @@
 require("sshfs"):setup()
 require("zoxide"):setup()
+require("relative-motions"):setup({ show_numbers = "none", show_motion = true })
 
 -- ============================================
 -- Line Numbers (left side)
@@ -12,7 +13,7 @@ function Current:redraw()
 
 	local offset = self._folder.offset
 	local cursor = self._folder.cursor
-	local left, right = {}, {}
+	local entities, linemodes = {}, {}
 	for i, f in ipairs(files) do
 		local entity = Entity:new(f)
 		local abs_pos = offset + i - 1
@@ -21,15 +22,12 @@ function Current:redraw()
 			and string.format("%3d ", cursor + 1)
 			or string.format("%3d ", rel)
 		local num = ui.Span(num_str):style(ui.Style():fg("darkgray"))
-		left[#left + 1] = ui.Line { num, entity:redraw() }
-		right[#right + 1] = Linemode:new(f):redraw()
-
-		local max = math.max(0, self._area.w - right[#right]:width() - 4)
-		left[#left]:truncate { max = max, ellipsis = entity:ellipsis(max) }
+		entities[#entities + 1] = ui.Line({ num, entity:redraw() }):style(entity:style())
+		linemodes[#linemodes + 1] = Linemode:new(f):redraw()
 	end
 
 	return {
-		ui.List(left):area(self._area),
-		ui.Text(right):area(self._area):align(ui.Align.RIGHT),
+		ui.List(entities):area(self._area),
+		ui.Text(linemodes):area(self._area):align(ui.Align.RIGHT),
 	}
 end
