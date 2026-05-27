@@ -12,9 +12,23 @@
 --   :help options
 -- ============================================================================
 
--- ----------------------------------------------------------------------------
+-- ============================================
+-- Filetype Overrides
+-- ============================================
+-- Nvim 0.12+ detects .tf as "tf" but the entire
+-- ecosystem (lspconfig, LazyVim, treesitter)
+-- expects "terraform". Remap here so everything
+-- works without per-tool patches.
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform-vars",
+  },
+})
+
+-- ============================================
 -- Python LSP Configuration
--- ----------------------------------------------------------------------------
+-- ============================================
 -- Set Pyright as the default Python Language Server
 -- Alternatives: "basedpyright", "pylsp", "ruff_lsp"
 vim.g.lazyvim_python_lsp = "pyright"
