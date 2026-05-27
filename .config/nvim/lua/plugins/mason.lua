@@ -47,6 +47,7 @@ return {
       "yamlls", -- YAML files
       "sqlls", -- SQL queries
       "sqls", -- SQL (alternative)
+      "hcl",
 
       -- -----------------------------------------------------------------------
       -- Code Formatters
