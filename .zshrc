@@ -237,3 +237,6 @@ compinit
 # End of Docker CLI completions
 
 [[ -s "/Users/herdanis/.gvm/scripts/gvm" ]] && source "/Users/herdanis/.gvm/scripts/gvm"
+
+# Added by PAI installer — make bun reachable for hook subprocesses
+export PATH="$HOME/.bun/bin:$PATH"

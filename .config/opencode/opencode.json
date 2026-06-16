@@ -12,17 +12,50 @@
       "options": {
         "baseURL": "http://127.0.0.1:1234/v1"
       }
+    },
+    "omlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "oMLX",
+      "options": {
+        "baseURL": "http://127.0.0.1:8998/v1",
+        "apiKey": "123123"
+      },
+      "models": {
+        "gpt-oss-20b-MXFP4-Q8": {
+          "name": "gpt-oss-20b-MXFP4-Q8",
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 131072,
+            "output": 2000000
+          }
+        }
+      }
     }
   },
   "mcp": {
     "MCP_DOCKER": {
       "type": "local",
-      "command": ["docker", "mcp", "gateway", "run"],
+      "command": [
+        "docker",
+        "mcp",
+        "gateway",
+        "run"
+      ],
       "enabled": true
     },
     "browsermcp": {
       "type": "local",
-      "command": ["npx", "@browsermcp/mcp@latest"]
+      "command": [
+        "npx",
+        "@browsermcp/mcp@latest"
+      ]
     },
     "serena": {
       "type": "local",
@@ -38,7 +71,13 @@
     },
     "tmux": {
       "type": "local",
-      "command": ["npx", "-y", "tmux-mcp", "--shell-type=fish"]
+      "command": [
+        "npx",
+        "-y",
+        "tmux-mcp",
+        "--shell-type=fish"
+      ]
     }
-  }
+  },
+  "model": "omlx/gpt-oss-20b-MXFP4-Q8"
 }

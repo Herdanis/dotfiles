@@ -189,3 +189,11 @@ fish_add_path /Users/herdanis/.agent-view/bin
 
 # zoxide (smart cd)
 zoxide init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
