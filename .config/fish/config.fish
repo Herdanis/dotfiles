@@ -120,8 +120,7 @@ alias mux="tmuxinator" # Tmux session manager
 # ----------------------------------------------------------------------------
 alias venv="source .venv/bin/activate.fish" # Activate Python virtual environment
 alias penv="python3.12 -m venv .venv" # Create new virtual environment
-alias p="python3.12" # Python 3.12 shortcut
-alias python="python3.12" # Default to Python 3.12
+alias p="python3" # Python shortcut
 alias pip-freeze="pip freeze > requirements.txt" # Export Python dependencies
 
 # ----------------------------------------------------------------------------

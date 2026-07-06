@@ -236,7 +236,8 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-[[ -s "/Users/herdanis/.gvm/scripts/gvm" ]] && source "/Users/herdanis/.gvm/scripts/gvm"
+# gvm only needed interactively; non-interactive source spams _encode/_decode
+[[ -o interactive && -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # Added by PAI installer — make bun reachable for hook subprocesses
 export PATH="$HOME/.bun/bin:$PATH"
