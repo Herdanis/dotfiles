@@ -13,14 +13,6 @@
 /opt/homebrew/bin/brew shellenv | source
 
 # ----------------------------------------------------------------------------
-# Interactive Shell Check
-# ----------------------------------------------------------------------------
-# This block runs only in interactive shells (not scripts)
-# Add interactive-only configurations here
-if status is-interactive
-end
-
-# ----------------------------------------------------------------------------
 # Load Credentials
 # ----------------------------------------------------------------------------
 # Source API keys, tokens, and other sensitive environment variables
@@ -34,8 +26,8 @@ end
 # Prompt Configuration (Starship)
 # ----------------------------------------------------------------------------
 # Starship: Cross-shell prompt with Git integration and customization
-set -Ux STARSHIP_CONFIG "$HOME/.config/starship/starship.toml" # Custom config location
-set -Ux STARSHIP_CACHE "$HOME/.starship/cache" # Cache directory
+set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml" # Custom config location
+set -gx STARSHIP_CACHE "$HOME/.starship/cache" # Cache directory
 starship init fish | source
 
 # set -x CODE_ASSIST_ENDPOINT "http://127.0.0.1:8317"
@@ -56,25 +48,24 @@ fzf --fish | source
 # ----------------------------------------------------------------------------
 # Default Editor
 # ----------------------------------------------------------------------------
-set -Ux EDITOR nvim # Use Neovim as default editor for git, etc.
+set -gx EDITOR nvim # Use Neovim as default editor for git, etc.
 
 # ----------------------------------------------------------------------------
 # Go Language Path
 # ----------------------------------------------------------------------------
-# Add Go binaries to PATH (for tools installed with 'go install')
-set -U fish_user_paths (go env GOPATH)/bin $fish_user_paths
+fish_add_path (go env GOPATH)/bin
 
 # ----------------------------------------------------------------------------
 # FZF Configuration
 # ----------------------------------------------------------------------------
 # Default search command: find files up to 3 directories deep
-set -Ux FZF_DEFAULT_COMMAND "find . -maxdepth 3"
+set -gx FZF_DEFAULT_COMMAND "find . -maxdepth 3"
 # Ctrl+T command: directories only
-set -Ux FZF_CTRL_T_COMMAND "find . -maxdepth 3 -type d"
+set -gx FZF_CTRL_T_COMMAND "find . -maxdepth 3 -type d"
 # Ctrl+T preview: show directory tree with colors, limited to 200 lines
-set -Ux FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
+set -gx FZF_CTRL_T_OPTS "--preview 'tree -C {} | head -200'"
 # Ctrl+R: hide history timestamp, show command only (field 3 = command, field 2 = timestamp)
-set -Ux FZF_CTRL_R_OPTS --with-nth=3..
+set -gx FZF_CTRL_R_OPTS --with-nth=3..
 
 # ----------------------------------------------------------------------------
 # Vim-style Cursor Configuration
@@ -176,24 +167,13 @@ alias c="claude" # Anthropic Claude CLI shortcut
 alias o="opencode" # OpenCode editor shortcut
 
 # ----------------------------------------------------------------------------
-# Additional Tools
+# Additional Tool Paths
 # ----------------------------------------------------------------------------
-# LM Studio CLI path (AI/LLM development tool)
-set -gx PATH $PATH /Users/herdanis/.cache/lm-studio/bin
-
-# opencode
-fish_add_path /Users/herdanis/.opencode/bin
-
-# agent-view
-fish_add_path /Users/herdanis/.agent-view/bin
+set -gx BUN_INSTALL "$HOME/.bun"
+fish_add_path "$HOME/.cache/lm-studio/bin" # LM Studio CLI
+fish_add_path "$HOME/.opencode/bin"
+fish_add_path "$HOME/.agent-view/bin"
+fish_add_path "$BUN_INSTALL/bin"
 
 # zoxide (smart cd)
 zoxide init fish | source
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
