@@ -132,29 +132,6 @@ return {
       end,
       desc = "Command History",
     },
-    {
-      "<leader>n",
-      function()
-        Snacks.picker.notifications()
-      end,
-      desc = "Notification History",
-    },
-    {
-      "<leader>e",
-      function()
-        Snacks.explorer()
-        -- Auto-toggle hidden files after opening
-        vim.defer_fn(function()
-          local buf = vim.api.nvim_get_current_buf()
-          local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
-          if ft == "snacks_explorer" then
-            vim.api.nvim_feedkeys("H", "n", false) -- Toggle hidden files
-            vim.api.nvim_feedkeys("I", "n", false) -- Toggle ignored files
-          end
-        end, 100)
-      end,
-      desc = "File Explorer",
-    },
     -- find
     {
       "<leader>fb",
@@ -228,13 +205,6 @@ return {
       desc = "Git Status",
     },
     {
-      "<leader>gS",
-      function()
-        Snacks.picker.git_stash()
-      end,
-      desc = "Git Stash",
-    },
-    {
       "<leader>gd",
       function()
         Snacks.picker.git_diff()
@@ -299,13 +269,6 @@ return {
         Snacks.picker.autocmds()
       end,
       desc = "Autocmds",
-    },
-    {
-      "<leader>sb",
-      function()
-        Snacks.picker.lines()
-      end,
-      desc = "Buffer Lines",
     },
     {
       "<leader>sc",
