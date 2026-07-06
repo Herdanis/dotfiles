@@ -37,6 +37,7 @@ return {
       },
     },
     window = {
+      position = "right",
       mappings = {
         ["l"] = "open",
         ["h"] = "close_node",
@@ -105,25 +106,23 @@ return {
       desc = "Buffer Explorer",
     },
   },
-  -- config = function(_, opts)
-  --   local function on_move(data)
-  --     Snacks.rename.on_rename_file(data.source, data.destination)
-  --   end
-  --
-  --   local events = require("neo-tree.events")
-  --   opts.event_handlers = opts.event_handlers or {}
-  --   vim.list_extend(opts.event_handlers, {
-  --     { event = events.FILE_MOVED, handler = on_move },
-  --     { event = events.FILE_RENAMED, handler = on_move },
-  --   })
-  --   require("neo-tree").setup(opts)
-  --   vim.api.nvim_create_autocmd("TermClose", {
-  --     pattern = "*lazygit",
-  --     callback = function()
-  --       if package.loaded["neo-tree.sources.git_status"] then
-  --         require("neo-tree.sources.git_status").refresh()
-  --       end
-  --     end,
-  --   })
-  -- end,
+  config = function(_, opts)
+    require("neo-tree").setup(opts)
+
+    -- ============================================
+    -- Refresh git colors after external git ops
+    -- ============================================
+    -- Commit changes no file content, so the libuv
+    -- watcher never fires; re-scan on focus/term close.
+    vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+      callback = function()
+        pcall(function()
+          require("neo-tree.sources.manager").refresh("filesystem")
+        end)
+        if package.loaded["neo-tree.sources.git_status"] then
+          require("neo-tree.sources.git_status").refresh()
+        end
+      end,
+    })
+  end,
 }
