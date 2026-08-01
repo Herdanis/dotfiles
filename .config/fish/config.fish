@@ -176,3 +176,8 @@ fish_add_path "$BUN_INSTALL/bin"
 
 # zoxide (smart cd)
 zoxide init fish | source
+
+# Added by jcode installer
+if not contains "/Users/herdanis/.local/bin" $PATH
+    set -gx PATH "/Users/herdanis/.local/bin" $PATH
+end
