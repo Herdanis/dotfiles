@@ -95,7 +95,9 @@
     "opencode-goal-plugin",
     "opencode-vibeguard",
     "opencode-websearch-cited",
-    "opencode-pty"
+    "opencode-pty",
+    "@dietrichgebert/ponytail",
+    "./plugins/caveman/plugin.js"
   ],
   "model": "omlx/gpt-oss-20b-MXFP4-Q8"
 }
