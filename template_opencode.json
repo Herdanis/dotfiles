@@ -1,21 +1,31 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": "ask",
+    "edit": "allow",
+    "webfetch": "ask"
+  },
   "mcp": {
-    "browsermcp": {
+    "MCP_DOCKER": {
       "type": "local",
-      "command": ["npx", "@browsermcp/mcp@latest"]
+      "command": ["docker", "mcp", "gateway", "run"],
+      "enabled": true
     },
-    "gcp": {
-      "type": "local",
-      "command": ["sh", "-c", "npx -y gcp-mcp"]
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp"
     },
     "tmux": {
       "type": "local",
       "command": ["npx", "-y", "tmux-mcp", "--shell-type=fish"]
     },
-    "jam": {
-      "type": "remote",
-      "url": "https://mcp.jam.dev/mcp"
+    "browsermcp": {
+      "type": "local",
+      "command": ["npx", "@browsermcp/mcp@latest"]
     },
     "serena": {
       "type": "local",
@@ -28,15 +38,16 @@
         "--open-web-dashboard",
         "False"
       ]
-    },
-    "postgres": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-postgres",
-        "postgresql://localhost/mydb"
-      ]
     }
-  }
+  },
+  "lsp": true,
+  "plugin": [
+    "opencode-supermemory",
+    "oh-my-opencode",
+    "opencode-notify",
+    "opencode-goal-plugin",
+    "opencode-vibeguard",
+    "opencode-websearch-cited",
+    "opencode-pty"
+  ]
 }
