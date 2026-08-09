@@ -2,8 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "permission": {
     "bash": "ask",
-    "edit": "allow",
-    "webfetch": "ask"
+    "edit": "ask",
+    "webfetch": "allow"
   },
   "provider": {
     "lmstudio": {
@@ -97,7 +97,8 @@
     "opencode-websearch-cited",
     "opencode-pty",
     "@dietrichgebert/ponytail",
-    "./plugins/caveman/plugin.js"
+    "./plugins/caveman/plugin.js",
+    "@slkiser/opencode-quota@latest"
   ],
-  "model": "omlx/gpt-oss-20b-MXFP4-Q8"
+  "model": "opencode-go/glm-5.2"
 }

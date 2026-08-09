@@ -5,6 +5,7 @@
     "session_child_cycle_reverse": "<leader>left"
   },
   "plugin": [
-    "oh-my-openagent"
+    "oh-my-openagent",
+    "@slkiser/opencode-quota@latest"
   ]
 }
