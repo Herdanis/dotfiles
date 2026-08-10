@@ -3,7 +3,15 @@
   "permission": {
     "bash": "ask",
     "edit": "ask",
-    "webfetch": "allow"
+    "webfetch": "allow",
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "skill": "allow",
+    "websearch": "allow",
+    "external_directory": "allow"
   },
   "provider": {
     "lmstudio": {
@@ -101,5 +109,5 @@
     "@slkiser/opencode-quota@latest",
     "superpowers@git+https://github.com/obra/superpowers.git"
   ],
-  "model": "opencode-go/glm-5.2"
+  "model": "modelnyaw/glm-5.2"
 }
