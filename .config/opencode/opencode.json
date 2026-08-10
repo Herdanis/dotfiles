@@ -98,7 +98,8 @@
     "opencode-pty",
     "@dietrichgebert/ponytail",
     "./plugins/caveman/plugin.js",
-    "@slkiser/opencode-quota@latest"
+    "@slkiser/opencode-quota@latest",
+    "superpowers@git+https://github.com/obra/superpowers.git"
   ],
   "model": "opencode-go/glm-5.2"
 }
