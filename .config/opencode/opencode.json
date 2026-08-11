@@ -139,5 +139,6 @@
     "@slkiser/opencode-quota@latest",
     "superpowers@git+https://github.com/obra/superpowers.git"
   ],
-  "model": "modelnyaw/glm-5.2"
+  "model": "modelnyaw/glm-5.2",
+  "small_model": "modelnyaw/kimi-k2.7-code"
 }
