@@ -1,11 +1,10 @@
 {
   "$schema": "https://opencode.ai/tui.json",
   "keybinds": {
-    "session_child_cycle": "<leader>right",
-    "session_child_cycle_reverse": "<leader>left"
+    "session_child_cycle": "\u003cleader\u003eright",
+    "session_child_cycle_reverse": "\u003cleader\u003eleft"
   },
   "plugin": [
-    "oh-my-openagent",
-    "@slkiser/opencode-quota@latest"
+    "opencode-subagent-statusline"
   ]
 }

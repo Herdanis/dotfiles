@@ -165,6 +165,12 @@ alias yz="yazi" # Terminal file manager shortcut
 alias c="claude" # Anthropic Claude CLI shortcut
 alias o="opencode" # OpenCode editor shortcut
 
+# ============================================
+# OpenCode - Disable Claude Code compat layer
+# ============================================
+set -gx OPENCODE_DISABLE_CLAUDE_CODE 1
+set -gx OPENCODE_DISABLE_CLAUDE_CODE_PLUGINS 1
+
 # ----------------------------------------------------------------------------
 # Additional Tool Paths
 # ----------------------------------------------------------------------------
