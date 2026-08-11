@@ -1,5 +1,59 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "lsp": true,
+  "mcp": {
+    "browsermcp": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@browsermcp/mcp@latest"
+      ]
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "engram": {
+      "command": [
+        "/opt/homebrew/bin/engram",
+        "mcp",
+        "--tools=agent"
+      ],
+      "enabled": true,
+      "type": "local"
+    },
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--open-web-dashboard",
+        "False"
+      ]
+    },
+    "tmux": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "tmux-mcp",
+        "--shell-type=fish"
+      ]
+    },
+    "codegraph": {
+      "type": "local",
+      "command": [
+        "codegraph",
+        "serve",
+        "--mcp"
+      ],
+      "enabled": true
+    }
+  },
+  "model": "modelnyaw/glm-5.2",
   "permission": {
     "bash": {
       "*": "ask",
@@ -30,7 +84,38 @@
       "uptime": "allow",
       "who": "allow",
       "w": "allow",
-      "last *": "allow"
+      "last *": "allow",
+      "rg *": "allow",
+      "rg": "allow",
+      "ag *": "allow",
+      "jq *": "allow",
+      "bat *": "allow",
+      "bat": "allow",
+      "glow *": "allow",
+      "tree *": "allow",
+      "tldr *": "allow",
+      "realpath *": "allow",
+      "dirname *": "allow",
+      "basename *": "allow",
+      "git status": "allow",
+      "git status *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
+      "git branch": "allow",
+      "git branch *": "allow",
+      "git remote": "allow",
+      "git remote *": "allow",
+      "git rev-parse *": "allow",
+      "git config --get *": "allow",
+      "git blame *": "allow",
+      "git ls-files *": "allow",
+      "git stash list": "allow",
+      "git tag": "allow",
+      "git tag *": "allow"
     },
     "edit": "ask",
     "webfetch": "allow",
@@ -43,6 +128,16 @@
     "websearch": "allow",
     "external_directory": "allow"
   },
+  "plugin": [
+    "opencode-supermemory",
+    "opencode-goal-plugin",
+    "opencode-vibeguard",
+    "opencode-websearch-cited",
+    "opencode-pty",
+    "@dietrichgebert/ponytail",
+    "./plugins/caveman/plugin.js",
+    "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
   "provider": {
     "lmstudio": {
       "name": "LM Studio (local)",
@@ -77,68 +172,5 @@
       }
     }
   },
-  "mcp": {
-    "MCP_DOCKER": {
-      "type": "local",
-      "command": [
-        "docker",
-        "mcp",
-        "gateway",
-        "run"
-      ],
-      "enabled": true
-    },
-    "browsermcp": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@browsermcp/mcp@latest"
-      ]
-    },
-    "serena": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena",
-        "start-mcp-server",
-        "--open-web-dashboard",
-        "False"
-      ]
-    },
-    "tmux": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "tmux-mcp",
-        "--shell-type=fish"
-      ]
-    },
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp"
-    },
-    "jam": {
-      "type": "remote",
-      "url": "https://mcp.jam.dev/mcp"
-    }
-  },
-  "lsp": true,
-  "plugin": [
-    "opencode-supermemory",
-    "oh-my-openagent",
-    "opencode-notify",
-    "opencode-goal-plugin",
-    "opencode-vibeguard",
-    "opencode-websearch-cited",
-    "opencode-pty",
-    "@dietrichgebert/ponytail",
-    "./plugins/caveman/plugin.js",
-    "@slkiser/opencode-quota@latest",
-    "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
-  "model": "modelnyaw/glm-5.2",
   "small_model": "modelnyaw/kimi-k2.7-code"
 }
