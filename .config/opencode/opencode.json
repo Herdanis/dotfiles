@@ -56,7 +56,6 @@
   "model": "modelnyaw/glm-5.2",
   "permission": {
     "bash": {
-      "*": "ask",
       "grep *": "allow",
       "head *": "allow",
       "tail *": "allow",
@@ -115,7 +114,8 @@
       "git ls-files *": "allow",
       "git stash list": "allow",
       "git tag": "allow",
-      "git tag *": "allow"
+      "git tag *": "allow",
+      "*": "ask"
     },
     "edit": "ask",
     "webfetch": "allow",
