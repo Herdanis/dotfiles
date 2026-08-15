@@ -5,6 +5,7 @@
     "session_child_cycle_reverse": "\u003cleader\u003eleft"
   },
   "plugin": [
-    "opencode-subagent-statusline"
+    "opencode-subagent-statusline",
+    "@leohenon/opencode-vim-plugin"
   ]
 }

@@ -23,6 +23,6 @@ function ai
         set win_idx (tmux new-window -d -P -F "#{window_index}" -t $session_name -c $workspace -n $window_name)
     end
 
-    # Launch opencode code in the new window (target by index, immune to auto-rename)
-    tmux send-keys -t "$session_name:$win_idx" opencode Enter
+    # # Launch opencode code in the new window (target by index, immune to auto-rename)
+    # tmux send-keys -t "$session_name:$win_idx" opencode Enter
 end
