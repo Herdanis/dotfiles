@@ -170,6 +170,76 @@
           }
         }
       }
+    },
+    "modelnyaw": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Modelnyaw",
+      "models": {
+        "auto-debug": {
+          "name": "Auto Debug",
+          "tool_call": true
+        },
+        "claude-sonnet-4.5": {
+          "name": "Claude Sonnet 4.5",
+          "tool_call": true
+        },
+        "claude-sonnet-4.5-thinking": {
+          "name": "Claude Sonnet 4.5 Thinking",
+          "tool_call": true
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "tool_call": true
+        },
+        "deepseek-v4-mod": {
+          "name": "DeepSeek V4 Mod",
+          "tool_call": true
+        },
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro",
+          "tool_call": true
+        },
+        "glm-5.2": {
+          "name": "GLM 5.2",
+          "tool_call": true
+        },
+        "glm-5.3": {
+          "name": "GLM 5.3",
+          "tool_call": true
+        },
+        "gpt-5.6": {
+          "name": "GPT 5.6",
+          "tool_call": true
+        },
+        "gpt-5.6-luna": {
+          "name": "GPT 5.6 Luna",
+          "tool_call": true
+        },
+        "gpt-5.6-terra": {
+          "name": "GPT 5.6 Terra",
+          "tool_call": true
+        },
+        "hy3": {
+          "name": "HY3",
+          "tool_call": true
+        },
+        "kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code",
+          "tool_call": true
+        },
+        "kimi-k2.7-code-highspeed": {
+          "name": "Kimi K2.7 Code Highspeed",
+          "tool_call": true
+        },
+        "kimi-k3": {
+          "name": "Kimi K3",
+          "tool_call": true
+        },
+        "mimo-v2.5-pro": {
+          "name": "Mimo V2.5 Pro",
+          "tool_call": true
+        }
+      }
     }
   },
   "small_model": "modelnyaw/kimi-k2.7-code",
