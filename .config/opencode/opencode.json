@@ -172,5 +172,12 @@
       }
     }
   },
-  "small_model": "modelnyaw/kimi-k2.7-code"
+  "small_model": "modelnyaw/kimi-k2.7-code",
+  "agent": {
+    "build": { "disable": true },
+    "plan": { "disable": true },
+    "general": { "disable": true },
+    "explore": { "disable": true },
+    "scout": { "disable": true }
+  }
 }
