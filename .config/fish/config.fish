@@ -89,6 +89,7 @@ set fish_cursor_visual block # Visual mode: block cursor (same as default)
 # Git Aliases
 # ----------------------------------------------------------------------------
 alias gitlog="git log --all --decorate --oneline --graph" # Pretty git log with graph
+alias gco="git checkout" # Git checkout shortcut
 alias lzgit="lazygit" # Terminal UI for git
 
 # ----------------------------------------------------------------------------

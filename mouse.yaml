@@ -1,0 +1,16 @@
+agent:
+  primary:
+    provider: opencode
+    model: modelnyaw/glm-5.2
+  secondary:
+    provider: ""
+    model: ""
+permissions:
+  fs:
+    deny: []
+  commands:
+    deny: []
+    ask: []
+a2a:
+  allow_inbound: true
+  allow_outbound: true
