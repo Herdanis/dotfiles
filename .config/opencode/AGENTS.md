@@ -68,3 +68,17 @@ In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the re
 
 If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
 <!-- CODEGRAPH_END -->
+
+# hmf (his-mouse-friday) protection rule
+
+Before editing files in a subdirectory, check if it's a registered hmf project:
+
+1. Call `list_project_agents` (hmf MCP tool). If no hmf tools available, skip this rule.
+2. If the file path falls inside a registered project's directory AND you are
+   NOT inside that project's directory yourself (cwd is different), STOP.
+3. Do NOT edit the file directly. Use `engage_project_agent` to delegate the
+   change to that project's agent instead.
+4. If the path is NOT inside any registered project, edit freely.
+
+This means: agents own their repo. You don't edit another agent's repo directly —
+you engage their agent. Like a tech team where each engineer owns their service.

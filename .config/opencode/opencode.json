@@ -1,13 +1,39 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "disable": true
+    },
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    },
+    "plan": {
+      "disable": true
+    },
+    "scout": {
+      "disable": true
+    }
+  },
   "lsp": true,
   "mcp": {
     "browsermcp": {
-      "type": "local",
       "command": [
         "npx",
         "@browsermcp/mcp@latest"
-      ]
+      ],
+      "type": "local"
+    },
+    "codegraph": {
+      "command": [
+        "codegraph",
+        "serve",
+        "--mcp"
+      ],
+      "enabled": true,
+      "type": "local"
     },
     "context7": {
       "type": "remote",
@@ -22,8 +48,14 @@
       "enabled": true,
       "type": "local"
     },
+    "hmf": {
+      "command": [
+        "hmf-mcp"
+      ],
+      "enabled": true,
+      "type": "local"
+    },
     "serena": {
-      "type": "local",
       "command": [
         "uvx",
         "--from",
@@ -32,101 +64,92 @@
         "start-mcp-server",
         "--open-web-dashboard",
         "False"
-      ]
+      ],
+      "type": "local"
     },
     "tmux": {
-      "type": "local",
       "command": [
         "npx",
         "-y",
         "tmux-mcp",
         "--shell-type=fish"
-      ]
-    },
-    "codegraph": {
-      "type": "local",
-      "command": [
-        "codegraph",
-        "serve",
-        "--mcp"
       ],
-      "enabled": true
+      "type": "local"
     }
   },
   "model": "modelnyaw/glm-5.2",
   "permission": {
     "bash": {
-      "grep *": "allow",
-      "head *": "allow",
-      "tail *": "allow",
-      "cat *": "allow",
-      "less *": "allow",
-      "more *": "allow",
-      "wc *": "allow",
-      "ls *": "allow",
-      "find *": "allow",
-      "file *": "allow",
-      "stat *": "allow",
-      "which *": "allow",
-      "type *": "allow",
-      "du *": "allow",
-      "df *": "allow",
-      "ps *": "allow",
-      "env *": "allow",
-      "printenv *": "allow",
-      "pwd": "allow",
-      "whoami": "allow",
-      "id *": "allow",
-      "date *": "allow",
-      "uname *": "allow",
-      "hostname *": "allow",
-      "uptime": "allow",
-      "who": "allow",
-      "w": "allow",
-      "last *": "allow",
-      "rg *": "allow",
-      "rg": "allow",
+      "*": "ask",
       "ag *": "allow",
-      "jq *": "allow",
-      "bat *": "allow",
-      "bat": "allow",
-      "glow *": "allow",
-      "tree *": "allow",
-      "tldr *": "allow",
-      "realpath *": "allow",
-      "dirname *": "allow",
       "basename *": "allow",
-      "git status": "allow",
-      "git status *": "allow",
+      "bat": "allow",
+      "bat *": "allow",
+      "cat *": "allow",
+      "date *": "allow",
+      "df *": "allow",
+      "dirname *": "allow",
+      "du *": "allow",
+      "env *": "allow",
+      "file *": "allow",
+      "find *": "allow",
+      "git blame *": "allow",
+      "git branch": "allow",
+      "git branch *": "allow",
+      "git config --get *": "allow",
       "git diff": "allow",
       "git diff *": "allow",
       "git log": "allow",
       "git log *": "allow",
-      "git show": "allow",
-      "git show *": "allow",
-      "git branch": "allow",
-      "git branch *": "allow",
+      "git ls-files *": "allow",
       "git remote": "allow",
       "git remote *": "allow",
       "git rev-parse *": "allow",
-      "git config --get *": "allow",
-      "git blame *": "allow",
-      "git ls-files *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
       "git stash list": "allow",
+      "git status": "allow",
+      "git status *": "allow",
       "git tag": "allow",
       "git tag *": "allow",
-      "*": "ask"
+      "glow *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "hostname *": "allow",
+      "id *": "allow",
+      "jq *": "allow",
+      "last *": "allow",
+      "less *": "allow",
+      "ls *": "allow",
+      "more *": "allow",
+      "printenv *": "allow",
+      "ps *": "allow",
+      "pwd": "allow",
+      "realpath *": "allow",
+      "rg": "allow",
+      "rg *": "allow",
+      "stat *": "allow",
+      "tail *": "allow",
+      "tldr *": "allow",
+      "tree *": "allow",
+      "type *": "allow",
+      "uname *": "allow",
+      "uptime": "allow",
+      "w": "allow",
+      "wc *": "allow",
+      "which *": "allow",
+      "who": "allow",
+      "whoami": "allow"
     },
-    "edit": "ask",
-    "webfetch": "allow",
-    "read": "allow",
+    "external_directory": "allow",
     "glob": "allow",
     "grep": "allow",
     "list": "allow",
     "lsp": "allow",
+    "read": "allow",
     "skill": "allow",
-    "websearch": "allow",
-    "external_directory": "allow"
+    "webfetch": "allow",
+    "websearch": "allow"
   },
   "plugin": [
     "opencode-supermemory",
@@ -146,34 +169,7 @@
         "baseURL": "http://127.0.0.1:1234/v1"
       }
     },
-    "omlx": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "oMLX",
-      "options": {
-        "baseURL": "http://127.0.0.1:8998/v1",
-        "apiKey": "123123"
-      },
-      "models": {
-        "gpt-oss-20b-MXFP4-Q8": {
-          "name": "gpt-oss-20b-MXFP4-Q8",
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "limit": {
-            "context": 131072,
-            "output": 2000000
-          }
-        }
-      }
-    },
     "modelnyaw": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Modelnyaw",
       "models": {
         "auto-debug": {
           "name": "Auto Debug",
@@ -239,15 +235,35 @@
           "name": "Mimo V2.5 Pro",
           "tool_call": true
         }
+      },
+      "name": "Modelnyaw",
+      "npm": "@ai-sdk/openai-compatible"
+    },
+    "omlx": {
+      "models": {
+        "gpt-oss-20b-MXFP4-Q8": {
+          "limit": {
+            "context": 131072,
+            "output": 2000000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "name": "gpt-oss-20b-MXFP4-Q8"
+        }
+      },
+      "name": "oMLX",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "apiKey": "123123",
+        "baseURL": "http://127.0.0.1:8998/v1"
       }
     }
   },
-  "small_model": "modelnyaw/kimi-k2.7-code",
-  "agent": {
-    "build": { "disable": true },
-    "plan": { "disable": true },
-    "general": { "disable": true },
-    "explore": { "disable": true },
-    "scout": { "disable": true }
-  }
+  "small_model": "modelnyaw/kimi-k2.7-code"
 }
