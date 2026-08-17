@@ -172,6 +172,7 @@ alias o="opencode" # OpenCode editor shortcut
 set -gx OPENCODE_DISABLE_CLAUDE_CODE 1
 set -gx OPENCODE_DISABLE_CLAUDE_CODE_PLUGINS 1
 
+alias tokscale="bunx tokscale@latest"
 # ----------------------------------------------------------------------------
 # Additional Tool Paths
 # ----------------------------------------------------------------------------
