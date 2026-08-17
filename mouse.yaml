@@ -1,7 +1,7 @@
 agent:
   primary:
     provider: opencode
-    model: modelnyaw/glm-5.2
+    model: opencode/deepseek-v4-flash-free
   secondary:
     provider: ""
     model: ""
