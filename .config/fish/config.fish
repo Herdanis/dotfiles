@@ -89,7 +89,6 @@ set fish_cursor_visual block # Visual mode: block cursor (same as default)
 # Git Aliases
 # ----------------------------------------------------------------------------
 alias gitlog="git log --all --decorate --oneline --graph" # Pretty git log with graph
-alias gco="git checkout" # Git checkout shortcut
 alias lzgit="lazygit" # Terminal UI for git
 
 # ----------------------------------------------------------------------------
@@ -97,7 +96,6 @@ alias lzgit="lazygit" # Terminal UI for git
 # ----------------------------------------------------------------------------
 alias k="kubectl" # Kubernetes CLI shortcut
 alias h="helm" # Helm package manager
-alias kali="docker exec -it kali bash" # Quick access to Kali Linux container
 alias k9s-logs="cd $HOME/Library/Application\ Support/k9s/screen-dumps/ && nvim" # View k9s logs
 
 # ----------------------------------------------------------------------------

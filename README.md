@@ -150,7 +150,6 @@ pip-freeze           # Export requirements.txt
 dock                 # docker
 dcompose             # docker-compose
 lzdoc                # lazydocker TUI
-kali                 # Access Kali Linux container
 
 # Terraform
 tf                   # terraform

@@ -129,7 +129,6 @@ export KUBE_EDITOR=nvim
 
 alias gitlog="git log --all --decorate --oneline --graph"
 alias k="kubectl"
-alias kali="docker exec -it kali bash"
 alias n="nvim"
 alias vim="nvim"
 alias vim="gvim"
