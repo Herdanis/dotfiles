@@ -8,7 +8,7 @@
       "disable": true
     },
     "general": {
-      "disable": true
+      "disable": false
     },
     "plan": {
       "disable": true
