@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "default_agent": "cavecrew-builder",
   "agent": {
     "build": {
       "disable": true
@@ -55,18 +56,6 @@
       "enabled": true,
       "type": "local"
     },
-    "serena": {
-      "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena",
-        "start-mcp-server",
-        "--open-web-dashboard",
-        "False"
-      ],
-      "type": "local"
-    },
     "tmux": {
       "command": [
         "npx",
@@ -75,6 +64,10 @@
         "--shell-type=fish"
       ],
       "type": "local"
+    },
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp"
     }
   },
   "model": "modelnyaw/glm-5.2",
@@ -159,6 +152,7 @@
     "opencode-pty",
     "@dietrichgebert/ponytail",
     "./plugins/caveman/plugin.js",
+    "./plugins/hmf/plugin.ts",
     "superpowers@git+https://github.com/obra/superpowers.git"
   ],
   "provider": {

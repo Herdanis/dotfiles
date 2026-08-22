@@ -60,54 +60,56 @@ Then run: `hmf project add <name> "$(pwd)" --workspace <ws>`
 
 ## Step 4: Permissions
 
-Before writing config files, ask the user what this project's agent should NOT do. Three questions. Each question: user types patterns (comma-separated), enters for defaults, or types "allow" to allow all (no restrictions).
+Before writing config files, ask the user what this project's agent should NOT do. Three questions. Each uses checkbox format — show options pre-checked with `[X]` (defaults). User types numbers to toggle, types custom additions, or "done" to accept.
 
-### Question 1: Command restrictions (deny)
+### Question 1: Commands to DENY
+
+Show the user a checkbox list (defaults pre-checked):
+
+```
+Commands to DENY (type number to toggle, type pattern to add, or "done"):
+[X] 1. kubectl delete
+[X] 2. kubectl apply
+[X] 3. gcloud * delete
+[X] 4. aws * delete
+[ ] 5. (add custom — type a pattern)
+```
+
+- Number (e.g. "2") → toggle that item. Re-display updated list. Ask again.
+- Custom pattern (e.g. "terraform destroy") → add as new item, auto-checked. Re-display. Ask again.
+- "done" → accept current selection. Proceed to next question.
+- "allow" → uncheck all (deny nothing). Proceed.
+
+If user toggles, re-display the full updated list before asking again. Repeat until "done".
+
+### Question 2: Commands to ASK (approval required)
 
 Show the user:
 
 ```
-Commands to DENY (agent cannot run these):
-Type patterns separated by commas, or:
-  - press enter for defaults: kubectl delete, kubectl apply, gcloud * delete, aws * delete
-  - type "allow" to deny nothing (allow all commands)
+Commands to ASK before running (type number to toggle, type pattern to add, or "done"):
+[X] 1. kubectl scale
+[ ] 2. (add custom — type a pattern)
 ```
 
-- Patterns → use them as the deny list.
-- Enter (empty) → use defaults shown.
-- "allow" → empty deny list (no commands blocked).
+Same toggle/add/done/allow rules as Question 1.
 
-### Question 2: Command approval (ask)
+### Question 3: Files to DENY
 
 Show the user:
 
 ```
-Commands to ASK before running (agent needs approval):
-Type patterns separated by commas, or:
-  - press enter for default: kubectl scale
-  - type "allow" to ask for nothing (no approval needed)
+Files to DENY access (type number to toggle, type pattern to add, or "done"):
+[X] 1. .env
+[X] 2. *.key
+[X] 3. .terraform/**
+[X] 4. secrets/**
+[ ] 5. (add custom — type a pattern)
 ```
 
-- Patterns → use them as the ask list.
-- Enter (empty) → use default shown.
-- "allow" → empty ask list (no approval prompts).
+Same toggle/add/done/allow rules as Question 1.
 
-### Question 3: File restrictions (deny)
-
-Show the user:
-
-```
-Files to DENY access (agent cannot read/write these):
-Type patterns separated by commas, or:
-  - press enter for defaults: .env, *.key, .terraform/**, secrets/**
-  - type "allow" to deny nothing (allow all files)
-```
-
-- Patterns → use them as the deny list.
-- Enter (empty) → use defaults shown.
-- "allow" → empty deny list (no files blocked).
-
-Store the three answers. Use them when writing mouse.yaml + opencode.json in Step 5.
+Store the final three lists (deny, ask, file-deny). Use them when writing mouse.yaml + opencode.json in Step 5.
 
 ## Step 5: Write config files
 
