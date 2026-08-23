@@ -154,7 +154,9 @@
     "./plugins/caveman/plugin.js",
     "./plugins/hmf/plugin.ts",
     "superpowers@git+https://github.com/obra/superpowers.git",
-    "opencode-wakatime"
+    "opencode-wakatime",
+    "@franlol/opencode-md-table-formatter@latest",
+    "@zenobius/opencode-skillful"
   ],
   "provider": {
     "lmstudio": {
