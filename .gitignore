@@ -6,3 +6,4 @@ archive
 .config/opencode/agent
 opencode.json
 /.serena
+/.config/opencode
