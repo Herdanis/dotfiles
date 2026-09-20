@@ -74,18 +74,18 @@ map("t", "<A-q>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<leader>dm", "<cmd>delmarks!<cr>", { desc = "Delete all marks" })
 
 -- ============================================================================
--- Tmux AI Session
+-- Herdr AI Workspace
 -- ============================================================================
 
--- Open/create a window in the tmux-ai session for current directory
+-- Open/focus the herdr workspace for current directory
 map("n", "<leader>ma", function()
   local result = vim.fn.system("fish -c 'ai'")
   if vim.v.shell_error == 0 then
-    vim.notify("ai: window created", vim.log.levels.INFO)
+    vim.notify("ai: workspace ready", vim.log.levels.INFO)
   else
     vim.notify("ai failed: " .. result, vim.log.levels.ERROR)
   end
-end, { desc = "Open AI session window" })
+end, { desc = "Open herdr AI workspace" })
 
 -- ============================================================================
 -- Color Scheme Selection
