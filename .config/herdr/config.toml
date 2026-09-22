@@ -166,6 +166,7 @@ description = "split: small bottom command pane"
 # directory = "~/.herdr/worktrees"
 
 [ui]
+prompt_new_tab_name = false
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
 

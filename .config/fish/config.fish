@@ -191,3 +191,8 @@ zoxide init fish | source
 if not contains "/Users/herdanis/.local/bin" $PATH
     set -gx PATH "/Users/herdanis/.local/bin" $PATH
 end
+
+# herdr-automatic-rename: live tab naming hook
+for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
+    test -r "$_f"; and source "$_f"; and break
+end
