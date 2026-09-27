@@ -29,7 +29,7 @@ These are NOT deployed by `stow .` — leave alone:
 
 - `pre-commit install` once. Hooks: gitleaks (custom `.gitleaks.toml`), large-file (>1MB, except `lazy-lock.json`), private-key detect, YAML/JSON syntax, trailing-ws/EOF/mixed-EOL.
 - `pre-commit run --all-files` to check without committing.
-- CI: `.github/workflows/gitleak.yaml` runs gitleaks on push/PR via reusable workflow `Herdanis/resuseable-workflow`.
+- CI: `.github/workflows/gitleak.yaml` runs gitleaks on push/PR via reusable workflow `Herdanis/the-invisible-mouse`.
 
 ## OpenCode Config
 
