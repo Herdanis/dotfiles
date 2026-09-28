@@ -370,96 +370,13 @@
     }
   },
   {
-    "plugin_id": "herdr-nvim-nav",
-    "name": "Vim Nav",
-    "version": "0.1.0",
-    "min_herdr_version": "0.7.0",
-    "description": "Ctrl+h/j/k/l across herdr panes and Neovim splits, without a per-key process for detection",
-    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b/herdr-plugin.toml",
-    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "build": [
-      {
-        "platforms": [
-          "macos",
-          "linux"
-        ],
-        "command": [
-          "cc",
-          "-O2",
-          "-o",
-          "herdr-nvim-nav",
-          "herdr-nvim-nav.c"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "down",
-        "title": "Navigate down",
-        "contexts": [
-          "global"
-        ],
-        "command": [
-          "./herdr-nvim-nav",
-          "down"
-        ]
-      },
-      {
-        "id": "left",
-        "title": "Navigate left",
-        "contexts": [
-          "global"
-        ],
-        "command": [
-          "./herdr-nvim-nav",
-          "left"
-        ]
-      },
-      {
-        "id": "right",
-        "title": "Navigate right",
-        "contexts": [
-          "global"
-        ],
-        "command": [
-          "./herdr-nvim-nav",
-          "right"
-        ]
-      },
-      {
-        "id": "up",
-        "title": "Navigate up",
-        "contexts": [
-          "global"
-        ],
-        "command": [
-          "./herdr-nvim-nav",
-          "up"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "aimdevlee",
-      "repo": "herdr-nvim-nav",
-      "resolved_commit": "ec047fd6d8d0269d54a34e9405af28d8aad4c8f0",
-      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b",
-      "installed_unix_ms": 1790577654025
-    }
-  },
-  {
     "plugin_id": "herdr.auto-title",
     "name": "Auto Title",
-    "version": "0.8.0",
+    "version": "0.9.1",
     "min_herdr_version": "0.8.2",
     "description": "Automatically generates contextual tab titles",
-    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8/herdr-plugin.toml",
-    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
+    "manifest_path": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
     "enabled": true,
     "platforms": [
       "linux",
@@ -530,9 +447,9 @@
       "kind": "github",
       "owner": "kryptamine",
       "repo": "herdr-auto-title",
-      "resolved_commit": "b7bc88efdadc154e489ab216eeb0f5ae5c1b5f9b",
+      "resolved_commit": "bb74c548c3a9f8efb7b898809a29145c2729dac2",
       "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
-      "installed_unix_ms": 1789957048261
+      "installed_unix_ms": 1790583891826
     }
   },
   {
@@ -708,11 +625,11 @@
   {
     "plugin_id": "hhdebb.herdr-radar",
     "name": "Herdr Radar",
-    "version": "1.3.12",
+    "version": "1.3.18",
     "min_herdr_version": "0.9.0",
     "description": "Who's working, who's waiting on you — grouped by project, each agent in its vendor's logo and colour. Worktrees nest under their repo, rows order by activity, idle sessions fade. Light and dark.",
-    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe/herdr-plugin.toml",
-    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe",
+    "manifest_path": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe",
     "enabled": true,
     "platforms": [
       "linux",
@@ -884,9 +801,9 @@
       "kind": "github",
       "owner": "hhdebb",
       "repo": "herdr-radar",
-      "resolved_commit": "aff48389d2c9a8db0bb4b7f548b643f4ab4d86bb",
+      "resolved_commit": "1869b06800ac5466ab8da1754c41b14aa880bbb8",
       "managed_path": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe",
-      "installed_unix_ms": 1790065101950
+      "installed_unix_ms": 1790583879444
     }
   }
 ]

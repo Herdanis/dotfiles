@@ -39,6 +39,8 @@ default_shell = "fish"
 # Use "follow" to inherit the source pane/workspace, "home" for $HOME,
 # "current" for Herdr's process directory, or a fixed path such as "~/Projects".
 # new_cwd = "follow"
+# tmux parity: new panes/tabs inherit current dir (tmux.conf -c pane_current_path)
+new_cwd = "follow"
 
 [update]
 # Update channel used by background version checks and `herdr update`.
@@ -66,12 +68,15 @@ prefix = "alt+space"
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
+# prefix+s = tmux session picker; settings moved to alt+s
+settings = "prefix+alt+s"
 # detach = "prefix+q"
 detach = "prefix+d"
 # reload_config = "prefix+shift+r"
 reload_config = "prefix+r"
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w"
+workspace_picker = "prefix+s"
 # goto = "prefix+g"
 # new_workspace = "prefix+shift+n"
 # new_worktree = "prefix+shift+g"
@@ -155,6 +160,20 @@ key = "prefix+|"
 type = "shell"
 command = "herdr pane split --current --direction down --ratio 0.15 --no-focus"
 description = "split: small bottom command pane"
+
+# herdr-nvim sidebar (chmarax.herdr-nvim). prefix+e free since edit_scrollback
+# moved to prefix+[; prefix+o taken by cycle_pane_next, so pick-file on prefix+f.
+[[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.

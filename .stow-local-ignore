@@ -51,3 +51,9 @@ Brewfile
 
 # Ignore archive directory
 ^/archive
+
+# Local scratch/tool state dirs; not deployed
+^/\.opencode
+^/\.claude
+^/\.remember
+^/graphify-out
