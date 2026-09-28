@@ -1,0 +1,892 @@
+[
+  {
+    "plugin_id": "chmarax.herdr-nvim",
+    "name": "herdr-nvim",
+    "version": "1.1.0",
+    "min_herdr_version": "0.7.5",
+    "description": "Full-height nvim sidebar with agent annotations: toggle with one key, comment code, send to any agent.",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "macos",
+          "linux"
+        ],
+        "command": [
+          "bash",
+          "herdr/install.sh"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell.exe",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "herdr/install.ps1"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "command": [
+          "bin/herdr-nvim",
+          "daemon-gc"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open-link",
+        "title": "nvim sidebar: open clicked file",
+        "command": [
+          "bin/herdr-nvim",
+          "open-link"
+        ]
+      },
+      {
+        "id": "pick-file",
+        "title": "nvim sidebar: open file from agent output",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "bin/herdr-nvim",
+          "pick-file"
+        ]
+      },
+      {
+        "id": "toggle",
+        "title": "nvim sidebar: toggle",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "bin/herdr-nvim",
+          "toggle"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "tab.closed",
+        "command": [
+          "bin/herdr-nvim",
+          "on-event"
+        ]
+      },
+      {
+        "on": "workspace.closed",
+        "command": [
+          "bin/herdr-nvim",
+          "on-event"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "picker",
+        "title": "open file",
+        "placement": "popup",
+        "command": [
+          "bin/herdr-nvim",
+          "picker"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "title": "nvim sidebar",
+        "placement": "split",
+        "command": [
+          "bin/herdr-nvim",
+          "sidebar"
+        ]
+      }
+    ],
+    "link_handlers": [
+      {
+        "id": "file-path",
+        "title": "Open in nvim sidebar",
+        "pattern": "^~?[\\w.@/()\\[\\]\\\\:+-]+[\\\\/][\\w.@()\\[\\]\\\\:+-]+\\.[A-Za-z]\\w*(?::\\d+){0,2}$",
+        "action": "open-link"
+      },
+      {
+        "id": "file-url",
+        "title": "Open in nvim sidebar",
+        "pattern": "^file://",
+        "action": "open-link"
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "ChmaraX",
+      "repo": "herdr-nvim",
+      "resolved_commit": "f35ed6df3cf55919c8d54409d08e8b664d8f0480",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23",
+      "installed_unix_ms": 1790576965227
+    }
+  },
+  {
+    "plugin_id": "herdr-automatic-rename",
+    "name": "Herdr Automatic Rename",
+    "version": "0.11.1",
+    "min_herdr_version": "0.7.1",
+    "description": "Auto-name tabs after where the work is and what is running there -- the directory, the branch, the machine reached over ssh, then the program or the task an agent reports -- and/or prefix workspaces, tabs, and agents with their 1-9 jump-key number. Each feature toggles via config.sh.",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "startup": [
+      {
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "startup"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "clear",
+        "title": "Herdr Automatic Rename: strip all number prefixes",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "--clear"
+        ]
+      },
+      {
+        "id": "doctor",
+        "title": "Herdr Automatic Rename: explain this tab's name",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "doctor"
+        ]
+      },
+      {
+        "id": "reset",
+        "title": "Reset tab to automatic naming",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "reset"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.agent_detected"
+        ]
+      },
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.agent_status_changed"
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.closed"
+        ]
+      },
+      {
+        "on": "pane.created",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.created"
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.exited"
+        ]
+      },
+      {
+        "on": "pane.focused",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.focused"
+        ]
+      },
+      {
+        "on": "pane.moved",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "pane.moved"
+        ]
+      },
+      {
+        "on": "tab.closed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "tab.closed"
+        ]
+      },
+      {
+        "on": "tab.created",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "tab.created"
+        ]
+      },
+      {
+        "on": "tab.focused",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "tab.focused"
+        ]
+      },
+      {
+        "on": "tab.moved",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "tab.moved"
+        ]
+      },
+      {
+        "on": "tab.renamed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "tab.renamed"
+        ]
+      },
+      {
+        "on": "workspace.closed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "workspace.closed"
+        ]
+      },
+      {
+        "on": "workspace.created",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "workspace.created"
+        ]
+      },
+      {
+        "on": "workspace.moved",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "workspace.moved"
+        ]
+      },
+      {
+        "on": "workspace.renamed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "workspace.renamed"
+        ]
+      },
+      {
+        "on": "workspace.reordered",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "workspace.reordered"
+        ]
+      },
+      {
+        "on": "worktree.created",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "worktree.created"
+        ]
+      },
+      {
+        "on": "worktree.opened",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "worktree.opened"
+        ]
+      },
+      {
+        "on": "worktree.removed",
+        "command": [
+          "bash",
+          "automatic-rename.sh",
+          "worktree.removed"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "qu8n",
+      "repo": "herdr-automatic-rename",
+      "resolved_commit": "081489b4d961d0d9c0c8b6a02d472e5cfe125ad5",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35",
+      "installed_unix_ms": 1790065249168
+    }
+  },
+  {
+    "plugin_id": "herdr-nvim-nav",
+    "name": "Vim Nav",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Ctrl+h/j/k/l across herdr panes and Neovim splits, without a per-key process for detection",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "macos",
+          "linux"
+        ],
+        "command": [
+          "cc",
+          "-O2",
+          "-o",
+          "herdr-nvim-nav",
+          "herdr-nvim-nav.c"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "down",
+        "title": "Navigate down",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "./herdr-nvim-nav",
+          "down"
+        ]
+      },
+      {
+        "id": "left",
+        "title": "Navigate left",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "./herdr-nvim-nav",
+          "left"
+        ]
+      },
+      {
+        "id": "right",
+        "title": "Navigate right",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "./herdr-nvim-nav",
+          "right"
+        ]
+      },
+      {
+        "id": "up",
+        "title": "Navigate up",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "./herdr-nvim-nav",
+          "up"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "aimdevlee",
+      "repo": "herdr-nvim-nav",
+      "resolved_commit": "ec047fd6d8d0269d54a34e9405af28d8aad4c8f0",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-nvim-nav-37d546a0d32b",
+      "installed_unix_ms": 1790577654025
+    }
+  },
+  {
+    "plugin_id": "herdr.auto-title",
+    "name": "Auto Title",
+    "version": "0.8.0",
+    "min_herdr_version": "0.8.2",
+    "description": "Automatically generates contextual tab titles",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "herdr-auto-title",
+          "./cmd/herdr-auto-title"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "herdr-auto-title.exe",
+          "./cmd/herdr-auto-title"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "./herdr-auto-title"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "./herdr-auto-title.exe"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "restart",
+        "title": "Auto Title: restart",
+        "description": "Start a fresh Auto Title in place of the running one",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "./herdr-auto-title",
+          "restart"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "kryptamine",
+      "repo": "herdr-auto-title",
+      "resolved_commit": "b7bc88efdadc154e489ab216eeb0f5ae5c1b5f9b",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
+      "installed_unix_ms": 1789957048261
+    }
+  },
+  {
+    "plugin_id": "herdr.collie",
+    "name": "Collie",
+    "version": "1.11.1",
+    "min_herdr_version": "0.7.0",
+    "description": "Mobile web UI to monitor and reply to your agent herd, served over Tailscale",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.collie-1edf0e1e987e/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr.collie-1edf0e1e987e",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "build"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "push-keys",
+        "title": "Generate push keys",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "push-keys"
+        ]
+      },
+      {
+        "id": "push-test",
+        "title": "Send a test notification",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "push-test"
+        ]
+      },
+      {
+        "id": "restart",
+        "title": "Restart Collie",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "restart"
+        ]
+      },
+      {
+        "id": "start",
+        "title": "Start Collie",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "start"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "Collie status",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "status"
+        ]
+      },
+      {
+        "id": "stop",
+        "title": "Stop Collie",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "stop"
+        ]
+      },
+      {
+        "id": "uninstall",
+        "title": "Uninstall Collie (remove service)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "uninstall"
+        ]
+      },
+      {
+        "id": "update",
+        "title": "Update plugin",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "update"
+        ]
+      },
+      {
+        "id": "update-major",
+        "title": "Update across a major version",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "update",
+          "--major"
+        ]
+      },
+      {
+        "id": "url",
+        "title": "Show Collie URL",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "url"
+        ]
+      },
+      {
+        "id": "version",
+        "title": "Show version",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "scripts/collie-ctl.sh",
+          "version"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "AltanS",
+      "repo": "collie",
+      "resolved_commit": "7cea41d0085dd9eba54358b7fc9e86ea51bc6594",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.collie-1edf0e1e987e",
+      "installed_unix_ms": 1789958066088
+    }
+  },
+  {
+    "plugin_id": "hhdebb.herdr-radar",
+    "name": "Herdr Radar",
+    "version": "1.3.12",
+    "min_herdr_version": "0.9.0",
+    "description": "Who's working, who's waiting on you — grouped by project, each agent in its vendor's logo and colour. Worktrees nest under their repo, rows order by activity, idle sessions fade. Light and dark.",
+    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "build": [
+      {
+        "command": [
+          "node",
+          "bin/setup.js"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "command": [
+          "node",
+          "bin/agent-icons.js"
+        ]
+      },
+      {
+        "command": [
+          "node",
+          "bin/agent-state.js"
+        ]
+      },
+      {
+        "command": [
+          "node",
+          "bin/agent-view.js",
+          "--reapply"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "configure",
+        "title": "Configure: install the sidebar, tab-bar and theme blocks",
+        "description": "Write (or repair) the three managed blocks in Herdr's config.toml and reload.",
+        "command": [
+          "node",
+          "bin/configure.js",
+          "--apply",
+          "--reload"
+        ]
+      },
+      {
+        "id": "install-font",
+        "title": "Font: install for this user and map codepoints in the terminal",
+        "description": "Copy the icon font into your user font directory (no admin needed) and write the codepoint map into ghostty/kitty configs that exist; other terminals get instructions in the log.",
+        "command": [
+          "node",
+          "bin/install-font.js"
+        ]
+      },
+      {
+        "id": "refresh",
+        "title": "Agent icons: refresh",
+        "description": "Reapply icon variants to all current panes.",
+        "command": [
+          "node",
+          "bin/agent-icons.js"
+        ]
+      },
+      {
+        "id": "settings",
+        "title": "Settings",
+        "description": "Open the settings popup.",
+        "command": [
+          "node",
+          "bin/settings.js",
+          "--open"
+        ]
+      },
+      {
+        "id": "state-start",
+        "title": "Agent state: start animator",
+        "description": "Start the lifecycle-state glyph animator.",
+        "command": [
+          "node",
+          "bin/agent-state.js"
+        ]
+      },
+      {
+        "id": "state-stop",
+        "title": "Agent state: stop animator",
+        "description": "Stop the lifecycle-state glyph animator and clear its marks. Titles and sort keys stay so the list stays readable; unconfigure clears everything.",
+        "command": [
+          "node",
+          "bin/agent-state.js",
+          "--stop"
+        ]
+      },
+      {
+        "id": "unconfigure",
+        "title": "Configure: remove the managed blocks",
+        "description": "Stop the daemon, clear every token it wrote, remove the three managed blocks from Herdr's config.toml and reload. Do this before uninstalling.",
+        "command": [
+          "node",
+          "bin/configure.js",
+          "--uninstall",
+          "--reload"
+        ]
+      },
+      {
+        "id": "uninstall-font",
+        "title": "Font: remove",
+        "description": "Remove the installed icon font and the terminal codepoint map this plugin wrote.",
+        "command": [
+          "node",
+          "bin/install-font.js",
+          "--uninstall"
+        ]
+      },
+      {
+        "id": "view-flip",
+        "title": "Agents: active <-> recent",
+        "description": "Flip between grouped-by-activity and flat-by-activity without leaving the plugin's order.",
+        "command": [
+          "node",
+          "bin/agent-view.js",
+          "--flip"
+        ]
+      },
+      {
+        "id": "view-native",
+        "title": "Agents: Herdr's panel <-> ours",
+        "description": "Toggle the whole Agents panel — order and row colours — between Herdr's own and the plugin's.",
+        "command": [
+          "node",
+          "bin/agent-view.js",
+          "--native"
+        ]
+      },
+      {
+        "id": "view-toggle",
+        "title": "Agents: cycle order (active / recent / off)",
+        "description": "Cycle the Agents panel: grouped by activity, flat by activity, or the panel's own order.",
+        "command": [
+          "node",
+          "bin/agent-view.js"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "node",
+          "bin/agent-state.js"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "settings",
+        "title": "herdr-radar settings",
+        "placement": "popup",
+        "width": 84,
+        "height": 26,
+        "command": [
+          "node",
+          "bin/settings.js"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "hhdebb",
+      "repo": "herdr-radar",
+      "resolved_commit": "aff48389d2c9a8db0bb4b7f548b643f4ab4d86bb",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/hhdebb.herdr-radar-afabda667cbe",
+      "installed_unix_ms": 1790065101950
+    }
+  }
+]
