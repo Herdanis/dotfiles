@@ -132,7 +132,7 @@ split_horizontal = "prefix+\""
 # zoom = "prefix+z"       # legacy alias: fullscreen
 # resize_mode = "prefix+r"
 resize_mode = "prefix+alt+r"
-# toggle_sidebar = "prefix+b"
+toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
@@ -175,6 +175,12 @@ type = "plugin_action"
 command = "chmarax.herdr-nvim.pick-file"
 description = "open file from agent output"
 
+[[keys.command]]
+key = "prefix+alt+,"
+type = "plugin_action"
+command = "hhdebb.herdr-radar.settings"
+description = "radar settings"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -195,13 +201,13 @@ tab_bar_right = [
 # <<< herdr-radar tab-bar block
 
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
-# sidebar_width = 26
+sidebar_width = 22
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
 
 # Maximum sidebar width when expanded (columns)
-# sidebar_max_width = 36
+sidebar_max_width = 30
 
 # Terminal width at or below which Herdr uses the mobile single-column layout.
 # Increase this for foldables, tablets, or wide phone terminals.
@@ -255,7 +261,7 @@ status_indicators = "symbols"
 # herdr = show in-app toasts
 # terminal = ask the outer terminal to show a desktop notification
 # system = ask the OS notification service directly
-# delivery = "off"
+delivery = "herdr"
 # delay_seconds = 1
 
 [ui.toast.herdr]
@@ -267,7 +273,7 @@ status_indicators = "symbols"
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
-# enabled = true
+enabled = true
 # Optional custom mp3 sound files. Relative paths are resolved from this config file's directory.
 # path = "sounds/notification.mp3"   # one mp3 file for all sound notifications
 # done_path = "sounds/done.mp3"      # overrides only finished notifications
