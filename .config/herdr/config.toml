@@ -181,6 +181,13 @@ type = "plugin_action"
 command = "hhdebb.herdr-radar.settings"
 description = "radar settings"
 
+[[keys.command]]
+key = "prefix+]"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"
+
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
