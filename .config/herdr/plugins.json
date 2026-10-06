@@ -139,234 +139,279 @@
     }
   },
   {
-    "plugin_id": "herdr-automatic-rename",
-    "name": "Herdr Automatic Rename",
-    "version": "0.11.1",
-    "min_herdr_version": "0.7.1",
-    "description": "Auto-name tabs after where the work is and what is running there -- the directory, the branch, the machine reached over ssh, then the program or the task an agent reports -- and/or prefix workspaces, tabs, and agents with their 1-9 jump-key number. Each feature toggles via config.sh.",
-    "manifest_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35/herdr-plugin.toml",
-    "plugin_root": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35",
+    "plugin_id": "devswha.herdr-web-ui",
+    "name": "herdr web ui",
+    "version": "0.3.51",
+    "min_herdr_version": "0.9.0",
+    "description": "Browser and phone client for herdr: chat and live terminal for every agent pane, remote PCs over SSH, web push alerts",
+    "manifest_path": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b/herdr-plugin.toml",
+    "plugin_root": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
     "enabled": true,
     "platforms": [
       "linux",
-      "macos"
+      "macos",
+      "windows"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/preflight.sh"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/preflight.ps1"
+        ]
+      },
+      {
+        "command": [
+          "bun",
+          "install"
+        ]
+      },
+      {
+        "command": [
+          "bun",
+          "run",
+          "build"
+        ]
+      }
     ],
     "startup": [
       {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "startup"
+          "bun",
+          "scripts/plugin.ts",
+          "start"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "start"
         ]
       }
     ],
     "actions": [
       {
-        "id": "clear",
-        "title": "Herdr Automatic Rename: strip all number prefixes",
+        "id": "phone",
+        "title": "Phone setup",
         "contexts": [
-          "global"
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
         ],
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "--clear"
+          "herdr",
+          "plugin",
+          "pane",
+          "open",
+          "--plugin",
+          "devswha.herdr-web-ui",
+          "--entrypoint",
+          "phone",
+          "--placement",
+          "zoomed",
+          "--focus"
         ]
       },
       {
-        "id": "doctor",
-        "title": "Herdr Automatic Rename: explain this tab's name",
+        "id": "phone-windows",
+        "title": "Phone setup",
         "contexts": [
-          "global"
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
         ],
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "doctor"
+          "herdr",
+          "plugin",
+          "pane",
+          "open",
+          "--plugin",
+          "devswha.herdr-web-ui",
+          "--entrypoint",
+          "phone-windows",
+          "--placement",
+          "zoomed",
+          "--focus"
         ]
       },
       {
-        "id": "reset",
-        "title": "Reset tab to automatic naming",
+        "id": "start",
+        "title": "Start herdr web ui",
         "contexts": [
-          "global"
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
         ],
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "reset"
+          "bun",
+          "scripts/plugin.ts",
+          "start"
+        ]
+      },
+      {
+        "id": "start-windows",
+        "title": "Start herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "start"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "herdr web ui status",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bun",
+          "scripts/plugin.ts",
+          "status"
+        ]
+      },
+      {
+        "id": "status-windows",
+        "title": "herdr web ui status",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "status"
+        ]
+      },
+      {
+        "id": "stop",
+        "title": "Stop herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bun",
+          "scripts/plugin.ts",
+          "stop"
+        ]
+      },
+      {
+        "id": "stop-windows",
+        "title": "Stop herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "stop"
         ]
       }
     ],
-    "events": [
+    "panes": [
       {
-        "on": "pane.agent_detected",
+        "id": "phone",
+        "title": "Phone setup",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "placement": "zoomed",
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.agent_detected"
+          "bun",
+          "scripts/plugin.ts",
+          "phone-setup"
         ]
       },
       {
-        "on": "pane.agent_status_changed",
+        "id": "phone-windows",
+        "title": "Phone setup",
+        "platforms": [
+          "windows"
+        ],
+        "placement": "zoomed",
         "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.agent_status_changed"
-        ]
-      },
-      {
-        "on": "pane.closed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.closed"
-        ]
-      },
-      {
-        "on": "pane.created",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.created"
-        ]
-      },
-      {
-        "on": "pane.exited",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.exited"
-        ]
-      },
-      {
-        "on": "pane.focused",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.focused"
-        ]
-      },
-      {
-        "on": "pane.moved",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "pane.moved"
-        ]
-      },
-      {
-        "on": "tab.closed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "tab.closed"
-        ]
-      },
-      {
-        "on": "tab.created",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "tab.created"
-        ]
-      },
-      {
-        "on": "tab.focused",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "tab.focused"
-        ]
-      },
-      {
-        "on": "tab.moved",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "tab.moved"
-        ]
-      },
-      {
-        "on": "tab.renamed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "tab.renamed"
-        ]
-      },
-      {
-        "on": "workspace.closed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "workspace.closed"
-        ]
-      },
-      {
-        "on": "workspace.created",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "workspace.created"
-        ]
-      },
-      {
-        "on": "workspace.moved",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "workspace.moved"
-        ]
-      },
-      {
-        "on": "workspace.renamed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "workspace.renamed"
-        ]
-      },
-      {
-        "on": "workspace.reordered",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "workspace.reordered"
-        ]
-      },
-      {
-        "on": "worktree.created",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "worktree.created"
-        ]
-      },
-      {
-        "on": "worktree.opened",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "worktree.opened"
-        ]
-      },
-      {
-        "on": "worktree.removed",
-        "command": [
-          "bash",
-          "automatic-rename.sh",
-          "worktree.removed"
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "phone-setup"
         ]
       }
     ],
     "source": {
       "kind": "github",
-      "owner": "qu8n",
-      "repo": "herdr-automatic-rename",
-      "resolved_commit": "081489b4d961d0d9c0c8b6a02d472e5cfe125ad5",
-      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr-automatic-rename-db02a35e1e35",
-      "installed_unix_ms": 1790065249168
+      "owner": "devswha",
+      "repo": "herdr-web-ui",
+      "resolved_commit": "b1ebe18ff5ee0bda652b620e1d306868d5670931",
+      "managed_path": "/Users/herdanis/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
+      "installed_unix_ms": 1791270903764
     }
   },
   {
@@ -455,7 +500,7 @@
   {
     "plugin_id": "herdr.auto-title",
     "name": "Auto Title",
-    "version": "0.9.1",
+    "version": "0.13.0",
     "min_herdr_version": "0.8.2",
     "description": "Automatically generates contextual tab titles",
     "manifest_path": "/Users/herdanis/.dotfiles/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8/herdr-plugin.toml",
@@ -530,9 +575,9 @@
       "kind": "github",
       "owner": "kryptamine",
       "repo": "herdr-auto-title",
-      "resolved_commit": "bb74c548c3a9f8efb7b898809a29145c2729dac2",
+      "resolved_commit": "0cf776db9a9450f1b190b4f3d787674c7a9d3ddb",
       "managed_path": "/Users/herdanis/.config/herdr/plugins/github/herdr.auto-title-4b7d61f48ce8",
-      "installed_unix_ms": 1790583891826
+      "installed_unix_ms": 1791270043858
     }
   },
   {
