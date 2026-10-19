@@ -240,3 +240,5 @@ compinit
 
 # Added by PAI installer — make bun reachable for hook subprocesses
 export PATH="$HOME/.bun/bin:$PATH"
+
+. "/var/folders/5v/vzt3xpc53g556ccx99fl3qqr0000gn/T/opencode/uv/env"
