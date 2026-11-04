@@ -202,12 +202,15 @@ description = "open file from agent output"
 # >>> herdr-radar tab-bar block
 tab_bar_right_separator = " · "
 tab_bar_right = [
+  { type = 'text', text = 'Files' },
+  { type = 'text', text = 'Changes' },
+  { type = 'text', text = 'Usage' },
   { type = 'command', command = 'cat "/Users/herdanis/.local/state/herdr/plugins/hhdebb.herdr-radar/tabbar.txt"', interval_seconds = 6, timeout_seconds = 2 },
 ]
 # <<< herdr-radar tab-bar block
 
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
-sidebar_width = 22
+sidebar_width = 30
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
@@ -251,6 +254,7 @@ sidebar_max_width = 30
 
 # Show detected/reported agent labels in split pane borders when no manual pane name is set.
 show_agent_labels_on_pane_borders = true
+pane_borders = "always"
 
 # Agent panel ordering: "spaces" (grouped by space) or "priority" (attention queue).
 # "workspaces" is accepted as an alias for "spaces".
