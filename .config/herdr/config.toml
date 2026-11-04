@@ -210,7 +210,7 @@ tab_bar_right = [
 # <<< herdr-radar tab-bar block
 
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
-sidebar_width = 30
+sidebar_width = 20
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
